@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model alumni_raw {
+  db_id                  Int     @id
+  source_id              String?
+  associate_number       String?
+  full_name              String?
+  surname                String?
+  first_name             String?
+  middle_name            String?
+  age_group              String?
+  phone_number           String?
+  email                  String?
+  second_email           String?
+  linkedin               String?
+  current_firm           String?
+  current_role           String?
+  current_role_seniority String?
+  current_city           String?
+  current_country        String?
+  current_industry       String?
+  notable_past_firms     String?
+  past_role_npf          String?
+  starting_month_npf     String?
+  ending_month_npf       String?
+  pr_city                String?
+  pr_city_2              String?
+  pr_city_3              String?
+  pr_country             String?
+  pr_country_2           String?
+  pr_country_3           String?
+  npf_industry           String?
+  jeme_starting_period   String?
+  jeme_ending_period     String?
+  jeme_role              String?
+  jeme_role_2            String?
+  jeme_role_3            String?
+  board                  String?
+  head                   String?
+}

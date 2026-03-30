@@ -1,0 +1,138 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+require("dotenv").config();
+
+const Database = require("better-sqlite3");
+const { Client } = require("pg");
+
+const sqlite = new Database("../alumni.db", { readonly: true });
+
+const pg = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+});
+
+async function main() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL is missing in .env");
+  }
+
+  await pg.connect();
+
+  const rows = sqlite
+    .prepare(`
+      SELECT *
+      FROM alumni_raw
+      WHERE full_name IS NOT NULL AND TRIM(full_name) <> ''
+    `)
+    .all();
+
+  let count = 0;
+
+  for (const row of rows) {
+    await pg.query(
+      `
+      INSERT INTO alumni_raw (
+        db_id,
+        source_id,
+        associate_number,
+        full_name,
+        surname,
+        first_name,
+        middle_name,
+        age_group,
+        phone_number,
+        email,
+        second_email,
+        linkedin,
+        current_firm,
+        "current_role",
+        current_role_seniority,
+        current_city,
+        current_country,
+        current_industry,
+        notable_past_firms,
+        past_role_npf,
+        starting_month_npf,
+        ending_month_npf,
+        pr_city,
+        pr_city_2,
+        pr_city_3,
+        pr_country,
+        pr_country_2,
+        pr_country_3,
+        npf_industry,
+        jeme_starting_period,
+        jeme_ending_period,
+        jeme_role,
+        jeme_role_2,
+        jeme_role_3,
+        board,
+        head
+      ) VALUES (
+        $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,
+        $11,$12,$13,$14,$15,$16,$17,$18,$19,$20,
+        $21,$22,$23,$24,$25,$26,$27,$28,$29,$30,
+        $31,$32,$33,$34,$35,$36
+      )
+      ON CONFLICT (db_id) DO NOTHING
+      `,
+      [
+        row.db_id,
+        row.source_id,
+        row.associate_number,
+        row.full_name,
+        row.surname,
+        row.first_name,
+        row.middle_name,
+        row.age_group,
+        row.phone_number,
+        row.email,
+        row.second_email,
+        row.linkedin,
+        row.current_firm,
+        row.current_role,
+        row.current_role_seniority,
+        row.current_city,
+        row.current_country,
+        row.current_industry,
+        row.notable_past_firms,
+        row.past_role_npf,
+        row.starting_month_npf,
+        row.ending_month_npf,
+        row.pr_city,
+        row.pr_city_2,
+        row.pr_city_3,
+        row.pr_country,
+        row.pr_country_2,
+        row.pr_country_3,
+        row.npf_industry,
+        row.jeme_starting_period,
+        row.jeme_ending_period,
+        row.jeme_role,
+        row.jeme_role_2,
+        row.jeme_role_3,
+        row.board,
+        row.head,
+      ]
+    );
+
+    count++;
+  }
+
+  console.log("Transferred rows:", count);
+
+  await pg.end();
+  sqlite.close();
+}
+
+main().catch(async (err) => {
+  console.error(err);
+  try {
+    await pg.end();
+  } catch {}
+  try {
+    sqlite.close();
+  } catch {}
+});
