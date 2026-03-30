@@ -1,0 +1,669 @@
+2026.03.25 23:46:44 INFO  Started: Metals version 1.6.6 in folders '/Users/anastasia/Downloads/JEME/LearningJS' for client Visual Studio Code 1.111.0.
+2026.03.25 23:46:44 INFO  Memory monitor started
+2026.03.25 23:46:45 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.25 23:46:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:48 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:48 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:49 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:49 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:49 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:49 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:50 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:46:49 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:47:42 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:48:44 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.25 23:48:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:48:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:48:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:48:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+Mar 25, 2026 11:48:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.25 23:48:48 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+Mar 25, 2026 11:48:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.25 23:48:48 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+Mar 25, 2026 11:48:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.25 23:48:49 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:48:53 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:03 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.25 23:49:03 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:04 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:29 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:40 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:40 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:40 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:40 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:41 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:41 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:41 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:41 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:42 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:41 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:43 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:43 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:43 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:43 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:58 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.25 23:49:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:49:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:50:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:50:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:51:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:51:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:51:43 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:52:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:52:22 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.25 23:52:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:52:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:52:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:52:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:52:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:52:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:52:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:11 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:53:41 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.25 23:53:41 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+Mar 25, 2026 11:54:03 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.25 23:54:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:54:18 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.25 23:54:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:54:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.25 23:54:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:45:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:45:33 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:45:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:45:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:45:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:21 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:21 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:21 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:21 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:24 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:47:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:26 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:47:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:47:30 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:47:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:48:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:48:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:48:40 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:48:40 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:48:40 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:48:41 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:48:40 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:48:46 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:48:46 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:15 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:15 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:15 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:15 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:16 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:16 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:16 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:18 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:52:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:52:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:01 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:01 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:02 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:02 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:02 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:02 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:53:06 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:53:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:52 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:52 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:55:52 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:53 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:53 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:53 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:57 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:55:57 INFO  Created report: Optional[file:///Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java]
+2026.03.26 12:55:57 INFO  empty definition using pc, found symbol in pc: java/sql/ResultSet# (full report at: "/Users/anastasia/Downloads/JEME/LearningJS/.metals/.reports/metals-full/2026-03-26/r_empty-definition_12-55-57-588.md")
+2026.03.26 12:55:58 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:55:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:04 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:07 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:07 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:07 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:07 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:14 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:56:14 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:25 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:29 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:29 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:56:34 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:56:34 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:58:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:58:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:58:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:58:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:58:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:58:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:58:16 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 12:58:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 12:59:16 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:07:25 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:07:25 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:07:25 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:07:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:07:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:07:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:07:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:07:31 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:07:31 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:08:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:08:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:08:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:08:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:08:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:08:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:08:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:08:33 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:08:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:16 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:09:23 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:09:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:10:54 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:10:54 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:10:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:10:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:10:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:10:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:10:59 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:10:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:12:03 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:12:03 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:12:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:12:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:12:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:12:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:12:14 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:12:14 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:14:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:16:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:16:27 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:16:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:16:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:16:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:25 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:17:29 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:17:29 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:18:18 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:18:18 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:19:21 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:19:21 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:19:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:19:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:19:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:19:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:19:29 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:19:29 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:31 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:31 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:31 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:33 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:20:37 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:20:37 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:21:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+Mar 26, 2026 1:23:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Mar 26, 2026 1:23:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Mar 26, 2026 1:23:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.26 13:27:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:27:32 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:27:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:27:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:27:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:28:00 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:28:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:28:04 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:38 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:38 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:30:38 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:38 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:38 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:56 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:56 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:56 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:56 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:30:57 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:31:02 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:31:02 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:17 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:47:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:20 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:47:25 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:47:25 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:53:03 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:53:03 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:53:03 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:53:03 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:53:03 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:53:03 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:56:16 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:56:16 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:56:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:57:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:57:23 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 13:57:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:57:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:57:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:58:12 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:58:12 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:58:12 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 13:58:14 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:03:32 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:04:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:04:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:04:24 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:04:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:10:47 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:10:48 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:11:36 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:43:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:43:10 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 14:43:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 14:46:15 INFO  Shutting down server
+2026.03.26 14:46:15 INFO  Memory monitor stopped
+2026.03.26 14:46:15 INFO  shutting down Metals
+2026.03.26 14:46:15 INFO  Exiting server
+2026.03.26 14:46:15 ERROR Unexpected error initializing server: 
+org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Request window/showMessageRequest failed with message: Canceled
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:214)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:198)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:189)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:97)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.lang.Thread.run(Thread.java:1474)
+
+2026.03.26 15:05:05 INFO  Started: Metals version 1.6.6 in folders '/Users/anastasia/Downloads/JEME/LearningJS' for client Visual Studio Code 1.111.0.
+2026.03.26 15:05:05 INFO  Memory monitor started
+2026.03.26 15:05:07 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.26 15:05:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 15:05:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+Mar 26, 2026 3:05:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Mar 26, 2026 3:05:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Mar 26, 2026 3:05:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Mar 26, 2026 3:05:29 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Mar 26, 2026 3:05:30 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.26 15:45:34 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 15:45:34 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+Mar 26, 2026 3:45:34 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 22
+2026.03.26 15:45:34 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 15:48:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 15:48:39 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+Mar 26, 2026 3:48:39 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 29
+2026.03.26 15:48:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 15:48:42 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 15:48:42 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 15:48:55 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 15:48:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 16:12:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 16:12:55 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+Mar 26, 2026 4:12:55 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 37
+2026.03.26 16:12:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 16:12:57 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 16:13:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 17:05:35 INFO  Shutting down server
+2026.03.26 17:05:35 INFO  Memory monitor stopped
+2026.03.26 17:05:35 INFO  shutting down Metals
+2026.03.26 17:05:35 INFO  Exiting server
+2026.03.26 17:05:35 ERROR Unexpected error initializing server: 
+org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Request window/showMessageRequest failed with message: Canceled
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:214)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:198)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:189)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:97)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.lang.Thread.run(Thread.java:1474)
+
+2026.03.26 19:22:43 INFO  Started: Metals version 1.6.6 in folders '/Users/anastasia/Downloads/JEME/LearningJS' for client Visual Studio Code 1.111.0.
+2026.03.26 19:22:43 INFO  Memory monitor started
+2026.03.26 19:22:45 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.26 19:22:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:22:49 INFO  running '/Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/java -Dfile.encoding=UTF-8 -Dmaven.multiModuleProjectDirectory=/Users/anastasia/Downloads/JEME/LearningJS/alumni-project -Dmaven.home=/var/folders/3m/csgdmbkx6z96nc57jsjdc9nh0000gn/T/metals11318490397687330516 -cp /var/folders/3m/csgdmbkx6z96nc57jsjdc9nh0000gn/T/metals11318490397687330516/maven-wrapper.jar org.apache.maven.wrapper.MavenWrapperMain generate-sources ch.epfl.scala:bloop-maven-plugin:2.0.3:bloopInstall -DdownloadSources=true'
+2026.03.26 19:22:52 ERROR WARNING: A restricted method in java.lang.System has been called
+2026.03.26 19:22:52 ERROR WARNING: java.lang.System::load has been called by org.fusesource.jansi.internal.JansiLoader in an unnamed module (file:/Users/anastasia/.m2/wrapper/dists/apache-maven-3.9.9-bin/33b4b2b4/apache-maven-3.9.9/lib/jansi-2.4.1.jar)
+2026.03.26 19:22:52 ERROR WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+2026.03.26 19:22:52 ERROR WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+2026.03.26 19:22:52 ERROR 
+2026.03.26 19:22:52 ERROR WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+2026.03.26 19:22:52 ERROR WARNING: sun.misc.Unsafe::objectFieldOffset has been called by com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper (file:/Users/anastasia/.m2/wrapper/dists/apache-maven-3.9.9-bin/33b4b2b4/apache-maven-3.9.9/lib/guava-33.2.1-jre.jar)
+2026.03.26 19:22:52 ERROR WARNING: Please consider reporting this to the maintainers of class com.google.common.util.concurrent.AbstractFuture$UnsafeAtomicHelper
+2026.03.26 19:22:52 ERROR WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+2026.03.26 19:22:53 INFO  [INFO] Scanning for projects...
+2026.03.26 19:22:53 INFO  [ERROR] [ERROR] Some problems were encountered while processing the POMs:
+2026.03.26 19:22:53 INFO  [ERROR] Malformed POM /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/pom.xml: Unrecognised tag: 'dependency' (position: START_TAG seen ...</dependencies>\r\n<dependency>... @31:13)  @ /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/pom.xml, line 31, column 13
+2026.03.26 19:22:53 INFO   @ 
+2026.03.26 19:22:53 INFO  [ERROR] The build could not read 1 project -> [Help 1]
+2026.03.26 19:22:53 INFO  [ERROR]   
+2026.03.26 19:22:53 INFO  [ERROR]   The project com.alumni:alumni-project:1.0-SNAPSHOT (/Users/anastasia/Downloads/JEME/LearningJS/alumni-project/pom.xml) has 1 error
+2026.03.26 19:22:53 INFO  [ERROR]     Malformed POM /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/pom.xml: Unrecognised tag: 'dependency' (position: START_TAG seen ...</dependencies>\r\n<dependency>... @31:13)  @ /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/pom.xml, line 31, column 13 -> [Help 2]
+2026.03.26 19:22:53 INFO  [ERROR] 
+2026.03.26 19:22:53 INFO  [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+2026.03.26 19:22:53 INFO  [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+2026.03.26 19:22:53 INFO  [ERROR] 
+2026.03.26 19:22:53 INFO  [ERROR] For more information about the errors and possible solutions, please read the following articles:
+2026.03.26 19:22:53 INFO  [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+2026.03.26 19:22:53 INFO  [ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/ModelParseException
+2026.03.26 19:22:53 INFO  time: ran 'mvn bloopInstall' in 4.41s
+2026.03.26 19:22:53 ERROR Maven command failed: /Library/Java/JavaVirtualMachines/temurin-25.jdk/Contents/Home/bin/java -Dfile.encoding=UTF-8 -Dmaven.multiModuleProjectDirectory=/Users/anastasia/Downloads/JEME/LearningJS/alumni-project -Dmaven.home=/var/folders/3m/csgdmbkx6z96nc57jsjdc9nh0000gn/T/metals11318490397687330516 -cp /var/folders/3m/csgdmbkx6z96nc57jsjdc9nh0000gn/T/metals11318490397687330516/maven-wrapper.jar org.apache.maven.wrapper.MavenWrapperMain generate-sources ch.epfl.scala:bloop-maven-plugin:2.0.3:bloopInstall -DdownloadSources=true
+2026.03.26 19:22:53 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 19:22:53 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:01 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:53 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:53 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:55 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:23:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:00 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:13 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:20 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:20 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:24:27 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 19:24:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:26:53 INFO  Shutting down server
+2026.03.26 19:26:53 INFO  Memory monitor stopped
+2026.03.26 19:26:53 INFO  shutting down Metals
+2026.03.26 19:26:53 INFO  Exiting server
+2026.03.26 19:29:10 INFO  Started: Metals version 1.6.6 in folders '/Users/anastasia/Downloads/JEME/LearningJS' for client Visual Studio Code 1.111.0.
+2026.03.26 19:29:10 INFO  Memory monitor started
+2026.03.26 19:29:11 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.26 19:29:11 INFO  skipping build import with status 'Failed'
+2026.03.26 19:29:12 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 19:29:17 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:26 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:27 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:28 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:30 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:39 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:41 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:42 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:44 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:47 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:56 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:29:59 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:43 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:43 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:45 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:47 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:47 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:47 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:47 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:49 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:52 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 19:30:52 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:30:58 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:01 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:05 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:07 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:06 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:07 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:08 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:09 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:11 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:10 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:11 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:11 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:11 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:14 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 19:31:14 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:20 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:19 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:22 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:23 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+2026.03.26 19:31:29 WARN  no build target for: /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java
+2026.03.26 19:31:29 INFO  no build target found for /Users/anastasia/Downloads/JEME/LearningJS/alumni-project/src/main/java/com/alumni/Main.java. Using fallback presentation compiler.
+Mar 26, 2026 9:07:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.26 21:44:36 INFO  Shutting down server
+2026.03.26 21:44:36 INFO  Memory monitor stopped
+2026.03.26 21:44:36 INFO  shutting down Metals
+2026.03.26 21:44:36 INFO  Exiting server
+2026.03.27 10:34:32 INFO  Started: Metals version 1.6.6 in folders '/Users/anastasia/Downloads/JEME/LearningJS' for client Visual Studio Code 1.111.0.
+2026.03.27 10:34:32 INFO  Memory monitor started
+2026.03.27 10:34:33 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.27 10:34:33 INFO  skipping build import with status 'Failed'
+Mar 27, 2026 12:46:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.03.27 13:22:47 INFO  Shutting down server
+2026.03.27 13:22:47 INFO  Memory monitor stopped
+2026.03.27 13:22:47 INFO  shutting down Metals
+2026.03.27 13:22:47 INFO  Exiting server
