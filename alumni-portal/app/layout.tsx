@@ -19,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${rubik.variable} font-sans antialiased`}>
+    <html lang="en" className="bg-[#FAF1F1]">
+      <body className={`${rubik.variable} font-sans antialiased bg-[#FAF1F1]`}>
         {children}
       </body>
     </html>

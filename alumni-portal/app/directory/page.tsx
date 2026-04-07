@@ -7,7 +7,7 @@ import InteractiveHeroTitle from "../components/InteractiveHeroTitle";
 export default function DirectoryPage() {
   return (
     <div className="min-h-screen overflow-hidden bg-[#FAF1F1] text-[#1D1D1B]">
-      <div className="pointer-events-none fixed inset-0">
+      <div className="pointer-events-none fixed inset-0 bg-[#FAF1F1]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(194,26,39,0.15),transparent_42%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_80%,rgba(155,18,28,0.11),transparent_34%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(210,55,70,0.07),transparent_30%)]" />
@@ -69,7 +69,6 @@ export default function DirectoryPage() {
               </div>
             </div>
 
-            <div className="mt-10 h-1.5 w-72 rounded-full bg-gradient-to-r from-[#C9A07F] via-[#D16B72] to-[#C21A27]" />
           </div>
         </div>
       </div>
@@ -145,39 +144,10 @@ function FeatureCard({
 }
 
 function GradientCardTitle({ children }: { children: string }) {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-  const [position, setPosition] = useState({ x: 50, y: 50 });
-  const [active, setActive] = useState(false);
-
-  function handleMove(event: React.MouseEvent<HTMLDivElement>) {
-    if (!wrapperRef.current) return;
-
-    const rect = wrapperRef.current.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-    setPosition({ x, y });
-  }
-
-  const gradient = active
-    ? `radial-gradient(circle at ${position.x}% ${position.y}%, #C21A27 0%, #D96C73 20%, #E8B9BD 40%, #1D1D1B 72%)`
-    : "linear-gradient(90deg, #1D1D1B 0%, #1D1D1B 100%)";
-
   return (
-    <div
-      ref={wrapperRef}
-      onMouseMove={handleMove}
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
-      className="inline-block"
-    >
-      <h2
-        className="text-4xl font-semibold leading-tight text-transparent bg-clip-text transition-[background-image] duration-200"
-        style={{ backgroundImage: gradient }}
-      >
-        {children}
-      </h2>
-    </div>
+    <h2 className="text-4xl font-semibold leading-tight text-[#1D1D1B]">
+      {children}
+    </h2>
   );
 }
 
@@ -230,38 +200,9 @@ function FloatingStat({
 }
 
 function GradientStatValue({ children }: { children: string }) {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-  const [position, setPosition] = useState({ x: 50, y: 50 });
-  const [active, setActive] = useState(false);
-
-  function handleMove(event: React.MouseEvent<HTMLDivElement>) {
-    if (!wrapperRef.current) return;
-
-    const rect = wrapperRef.current.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-    setPosition({ x, y });
-  }
-
-  const gradient = active
-    ? `radial-gradient(circle at ${position.x}% ${position.y}%, #C21A27 0%, #D96C73 20%, #E8B9BD 42%, #1D1D1B 72%)`
-    : "linear-gradient(90deg, #1D1D1B 0%, #1D1D1B 100%)";
-
   return (
-    <div
-      ref={wrapperRef}
-      onMouseMove={handleMove}
-      onMouseEnter={() => setActive(true)}
-      onMouseLeave={() => setActive(false)}
-      className="inline-block"
-    >
-      <div
-        className="text-4xl font-semibold tracking-tight text-transparent bg-clip-text transition-[background-image] duration-200 md:text-5xl"
-        style={{ backgroundImage: gradient }}
-      >
-        {children}
-      </div>
+    <div className="text-4xl font-semibold tracking-tight text-[#1D1D1B] md:text-5xl">
+      {children}
     </div>
   );
 }

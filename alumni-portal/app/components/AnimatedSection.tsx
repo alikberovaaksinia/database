@@ -24,6 +24,7 @@ export default function AnimatedSection({
         delay,
         ease: [0.22, 1, 0.36, 1],
       }}
+      suppressHydrationWarning
     >
       {children}
     </motion.div>

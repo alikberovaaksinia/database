@@ -55,11 +55,24 @@ export default function AlumniTable({
           ? getCountryName(person.current_country)
           : "—";
 
+        const profileHref = `/alumni/${person.db_id}?returnTo=${encodeURIComponent(returnTo)}`;
+
         return (
           <div
             key={String(person.db_id)}
-            className="group rounded-[26px] border border-[#E7DCDD] bg-white/92 shadow-[0_14px_30px_rgba(0,0,0,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_42px_rgba(194,26,39,0.10)]"
+            className="group relative rounded-[26px] border border-[#E7DCDD] bg-white/92 shadow-[0_14px_30px_rgba(0,0,0,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_42px_rgba(194,26,39,0.10)]"
           >
+            {/* Stretched link — covers the whole card for mouse/touch users.
+                tabIndex={-1} + aria-hidden keeps it out of keyboard/screen-reader
+                flow; the "Open" button handles those instead. */}
+            <Link
+              href={profileHref}
+              className="absolute inset-0 z-0 rounded-[26px] focus:outline-none"
+              tabIndex={-1}
+              aria-hidden="true"
+            />
+
+            {/* ── Desktop row ── */}
             <div className="hidden grid-cols-[minmax(260px,1.4fr)_minmax(180px,1fr)_minmax(180px,1fr)_140px_120px] items-center gap-6 px-8 py-6 lg:grid">
               <div className="min-w-0">
                 <div className="truncate text-[1.35rem] font-semibold tracking-tight text-[#1D1D1B] transition-colors duration-200 group-hover:text-[#C21A27]">
@@ -79,9 +92,11 @@ export default function AlumniTable({
                 {country}
               </div>
 
-              <div className="text-right">
+              {/* relative z-10 lifts the button above the stretched link so
+                  clicks here land on the button, not the background link. */}
+              <div className="relative z-10 text-right">
                 <Link
-                  href={`/alumni/${person.db_id}?returnTo=${encodeURIComponent(returnTo)}`}
+                  href={profileHref}
                   className="inline-flex items-center gap-2 rounded-full border border-[#E7DCDD] bg-white px-4 py-2 text-sm font-semibold text-[#C21A27] transition-all duration-200 hover:border-[#C21A27] hover:bg-[#C21A27] hover:text-white"
                 >
                   Open
@@ -92,6 +107,7 @@ export default function AlumniTable({
               </div>
             </div>
 
+            {/* ── Mobile card ── */}
             <div className="space-y-4 px-6 py-6 lg:hidden">
               <div>
                 <div className="text-2xl font-semibold tracking-tight text-[#1D1D1B] transition-colors duration-200 group-hover:text-[#C21A27]">
@@ -105,9 +121,9 @@ export default function AlumniTable({
                 <InfoBlock label="Country" value={country} />
               </div>
 
-              <div>
+              <div className="relative z-10">
                 <Link
-                  href={`/alumni/${person.db_id}?returnTo=${encodeURIComponent(returnTo)}`}
+                  href={profileHref}
                   className="inline-flex items-center gap-2 rounded-full border border-[#E7DCDD] bg-white px-4 py-2 text-sm font-semibold text-[#C21A27] transition-all duration-200 hover:border-[#C21A27] hover:bg-[#C21A27] hover:text-white"
                 >
                   Open profile

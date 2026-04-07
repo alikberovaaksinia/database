@@ -22,21 +22,15 @@ async function main() {
 
   const rows = sqlite
     .prepare(`
-      SELECT rowid as sqlite_rowid, *
+      SELECT *
       FROM alumni_raw
+      WHERE full_name IS NOT NULL AND TRIM(full_name) <> ''
     `)
     .all();
 
   let count = 0;
 
   for (const row of rows) {
-    const safeDbId =
-      row.db_id !== null &&
-      row.db_id !== undefined &&
-      String(row.db_id).trim() !== ""
-        ? Number(row.db_id)
-        : -Number(row.sqlite_rowid);
-
     await pg.query(
       `
       INSERT INTO alumni_raw (
@@ -79,48 +73,22 @@ async function main() {
       ) VALUES (
         $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,
         $11,$12,$13,$14,$15,$16,$17,$18,$19,$20,
-        $21,$22,$23,$24,$25,$26,$27,$28,$29,$30,
+ON CONFLICT (db_id) DO UPDATE SET
+  current_role = EXCLUDED.current_role
+VALUES (
+  $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,
+  $11,$12,$13,$14,$15,$16,$17,$18,$19,$20,
+  $21,$22,$23,$24,$25,$26,$27,$28,$29,$30,
+  $31,$32,$33,$34,$35,$36
+)
+ON CONFLICT (db_id) DO UPDATE SET
+  current_role = EXCLUDED.current_role        $21,$22,$23,$24,$25,$26,$27,$28,$29,$30,
         $31,$32,$33,$34,$35,$36
       )
-      ON CONFLICT (db_id) DO UPDATE SET
-        source_id = EXCLUDED.source_id,
-        associate_number = EXCLUDED.associate_number,
-        full_name = EXCLUDED.full_name,
-        surname = EXCLUDED.surname,
-        first_name = EXCLUDED.first_name,
-        middle_name = EXCLUDED.middle_name,
-        age_group = EXCLUDED.age_group,
-        phone_number = EXCLUDED.phone_number,
-        email = EXCLUDED.email,
-        second_email = EXCLUDED.second_email,
-        linkedin = EXCLUDED.linkedin,
-        current_firm = EXCLUDED.current_firm,
-        "current_role" = EXCLUDED."current_role",
-        current_role_seniority = EXCLUDED.current_role_seniority,
-        current_city = EXCLUDED.current_city,
-        current_country = EXCLUDED.current_country,
-        current_industry = EXCLUDED.current_industry,
-        notable_past_firms = EXCLUDED.notable_past_firms,
-        past_role_npf = EXCLUDED.past_role_npf,
-        starting_month_npf = EXCLUDED.starting_month_npf,
-        ending_month_npf = EXCLUDED.ending_month_npf,
-        pr_city = EXCLUDED.pr_city,
-        pr_city_2 = EXCLUDED.pr_city_2,
-        pr_city_3 = EXCLUDED.pr_city_3,
-        pr_country = EXCLUDED.pr_country,
-        pr_country_2 = EXCLUDED.pr_country_2,
-        pr_country_3 = EXCLUDED.pr_country_3,
-        npf_industry = EXCLUDED.npf_industry,
-        jeme_starting_period = EXCLUDED.jeme_starting_period,
-        jeme_ending_period = EXCLUDED.jeme_ending_period,
-        jeme_role = EXCLUDED.jeme_role,
-        jeme_role_2 = EXCLUDED.jeme_role_2,
-        jeme_role_3 = EXCLUDED.jeme_role_3,
-        board = EXCLUDED.board,
-        head = EXCLUDED.head
+      ON CONFLICT (db_id) DO NOTHING
       `,
       [
-        safeDbId,
+        row.db_id,
         row.source_id,
         row.associate_number,
         row.full_name,

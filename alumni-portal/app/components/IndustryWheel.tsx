@@ -24,6 +24,10 @@ function toRad(deg: number) {
   return (deg - 90) * (Math.PI / 180);
 }
 
+function r3(n: number) {
+  return Math.round(n * 1000) / 1000;
+}
+
 function sectorPath(
   cx: number, cy: number,
   ro: number, ri: number,
@@ -33,10 +37,10 @@ function sectorPath(
   const c0 = Math.cos(toRad(a0)), s0 = Math.sin(toRad(a0));
   const c1 = Math.cos(toRad(a1)), s1 = Math.sin(toRad(a1));
   return [
-    `M ${cx + ro * c0} ${cy + ro * s0}`,
-    `A ${ro} ${ro} 0 ${large} 1 ${cx + ro * c1} ${cy + ro * s1}`,
-    `L ${cx + ri * c1} ${cy + ri * s1}`,
-    `A ${ri} ${ri} 0 ${large} 0 ${cx + ri * c0} ${cy + ri * s0}`,
+    `M ${r3(cx + ro * c0)} ${r3(cy + ro * s0)}`,
+    `A ${ro} ${ro} 0 ${large} 1 ${r3(cx + ro * c1)} ${r3(cy + ro * s1)}`,
+    `L ${r3(cx + ri * c1)} ${r3(cy + ri * s1)}`,
+    `A ${ri} ${ri} 0 ${large} 0 ${r3(cx + ri * c0)} ${r3(cy + ri * s0)}`,
     "Z",
   ].join(" ");
 }
@@ -75,8 +79,8 @@ export default function IndustryWheel({
       item,
       path: sectorPath(cx, cy, ro, ri, a0, a1),
       color: PALETTE[i % PALETTE.length],
-      tx: Math.cos(midRad) * 8,
-      ty: Math.sin(midRad) * 8,
+      tx: r3(Math.cos(midRad) * 8),
+      ty: r3(Math.sin(midRad) * 8),
     };
   });
 

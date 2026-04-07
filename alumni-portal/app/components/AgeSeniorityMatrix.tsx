@@ -5,15 +5,13 @@ type AgeBySeniorityRow = {
   ageGroup: string;
   Entry: number;
   Mid: number;
-  Manager: number;
-  Director: number;
   Executive: number;
   Other: number;
 };
 
 type SeniorityKey = keyof Omit<AgeBySeniorityRow, "ageGroup">;
 
-const KEYS: SeniorityKey[] = ["Entry", "Mid", "Manager", "Director", "Executive", "Other"];
+const KEYS: SeniorityKey[] = ["Entry", "Mid", "Executive", "Other"];
 
 // Complete literal strings so Tailwind v4 scanner picks them up
 const INTENSITY: { max: number; cls: string }[] = [

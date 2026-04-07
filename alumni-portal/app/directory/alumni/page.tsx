@@ -16,6 +16,8 @@ type SearchParams = Promise<{
   board?: string | string[];
   head?: string | string[];
   pastFirm?: string | string[];
+  pastRole?: string | string[];
+  gradYear?: string | string[];
   page?: string | string[];
 }>;
 
@@ -43,8 +45,9 @@ export default async function AlumniPage({
   const selectedBoards = getMany(params.board);
   const selectedHeads = getMany(params.head);
 
-  const selectedPastFirms: string[] = [];
-  const pastFirmOptions: Option[] = [];
+  const selectedPastFirms = getMany(params.pastFirm);
+  const selectedPastRoles = getMany(params.pastRole);
+  const selectedGradYears = getMany(params.gradYear);
 
   const rawPage = Number(getSingle(params.page) || "1");
   const currentPage = Number.isFinite(rawPage) && rawPage > 0 ? rawPage : 1;
@@ -52,11 +55,16 @@ export default async function AlumniPage({
   const andConditions: Record<string, unknown>[] = [];
 
   if (query) {
-    andConditions.push({
-      full_name: {
-        contains: query,
-      },
-    });
+    const words = query.trim().split(/\s+/).filter(Boolean);
+    for (const word of words) {
+      andConditions.push({
+        OR: [
+          { full_name: { contains: word, mode: "insensitive" } },
+          { current_firm: { contains: word, mode: "insensitive" } },
+          { current_role: { contains: word, mode: "insensitive" } },
+        ],
+      });
+    }
   }
 
   if (selectedCountries.length) {
@@ -107,6 +115,26 @@ export default async function AlumniPage({
     });
   }
 
+  if (selectedPastFirms.length) {
+    andConditions.push({
+      notable_past_firms: { in: selectedPastFirms },
+    });
+  }
+
+  if (selectedPastRoles.length) {
+    andConditions.push({
+      past_role_npf: { in: selectedPastRoles },
+    });
+  }
+
+  if (selectedGradYears.length) {
+    andConditions.push({
+      OR: selectedGradYears.map((year) => ({
+        jeme_ending_period: { contains: year, mode: "insensitive" },
+      })),
+    });
+  }
+
   const where = andConditions.length ? { AND: andConditions } : {};
 
   const totalCount = await prisma.alumni_raw.count({ where });
@@ -124,6 +152,9 @@ export default async function AlumniPage({
     jemeRolesRaw,
     boardRaw,
     headRaw,
+    pastFirmsRaw,
+    pastRolesRaw,
+    gradPeriodsRaw,
   ] = await Promise.all([
     prisma.alumni_raw.findMany({
       where,
@@ -186,6 +217,24 @@ export default async function AlumniPage({
       distinct: ["head"],
       select: { head: true },
     }),
+
+    prisma.alumni_raw.findMany({
+      where: { notable_past_firms: { not: "" } },
+      distinct: ["notable_past_firms"],
+      select: { notable_past_firms: true },
+    }),
+
+    prisma.alumni_raw.findMany({
+      where: { past_role_npf: { not: "" } },
+      distinct: ["past_role_npf"],
+      select: { past_role_npf: true },
+    }),
+
+    prisma.alumni_raw.findMany({
+      where: { jeme_ending_period: { not: "" } },
+      distinct: ["jeme_ending_period"],
+      select: { jeme_ending_period: true },
+    }),
   ]);
 
   const countryOptions: Option[] = countriesRaw
@@ -206,6 +255,17 @@ export default async function AlumniPage({
   const jemeRoleOptions = toOptions(jemeRolesRaw.map((row) => row.jeme_role));
   const boardOptions = toBooleanOptions(boardRaw.map((row) => row.board));
   const headOptions = toBooleanOptions(headRaw.map((row) => row.head));
+  const pastFirmOptions = toOptions(pastFirmsRaw.map((row) => row.notable_past_firms));
+  const pastRoleOptions = toOptions(pastRolesRaw.map((row) => row.past_role_npf));
+  const gradYearOptions: Option[] = [
+    ...new Set(
+      gradPeriodsRaw
+        .map((row) => extractYear(row.jeme_ending_period))
+        .filter((y): y is string => y !== null),
+    ),
+  ]
+    .sort((a, b) => b.localeCompare(a))
+    .map((year) => ({ value: year, label: year }));
 
   const returnTo = buildReturnTo({
     q: query,
@@ -217,6 +277,9 @@ export default async function AlumniPage({
     jemeRole: selectedJemeRoles,
     board: selectedBoards,
     head: selectedHeads,
+    pastFirm: selectedPastFirms,
+    pastRole: selectedPastRoles,
+    gradYear: selectedGradYears,
     page: safePage,
   });
 
@@ -230,6 +293,9 @@ export default async function AlumniPage({
     jemeRole: selectedJemeRoles,
     board: selectedBoards,
     head: selectedHeads,
+    pastFirm: selectedPastFirms,
+    pastRole: selectedPastRoles,
+    gradYear: selectedGradYears,
   });
 
   const startItem = totalCount === 0 ? 0 : skip + 1;
@@ -237,7 +303,7 @@ export default async function AlumniPage({
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#FCFAFA] text-[#1D1D1B]">
-      <div className="pointer-events-none fixed inset-0">
+      <div className="pointer-events-none fixed inset-0 bg-[#FCFAFA]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(194,26,39,0.08),transparent_28%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_70%,rgba(194,26,39,0.05),transparent_18%)]" />
       </div>
@@ -269,6 +335,8 @@ export default async function AlumniPage({
           selectedBoards={selectedBoards}
           selectedHeads={selectedHeads}
           selectedPastFirms={selectedPastFirms}
+          selectedPastRoles={selectedPastRoles}
+          selectedGradYears={selectedGradYears}
           countryOptions={countryOptions}
           roleOptions={roleOptions}
           companyOptions={companyOptions}
@@ -278,6 +346,8 @@ export default async function AlumniPage({
           boardOptions={boardOptions}
           headOptions={headOptions}
           pastFirmOptions={pastFirmOptions}
+          pastRoleOptions={pastRoleOptions}
+          gradYearOptions={gradYearOptions}
         />
 
         <div className="mb-4 mt-8 flex flex-wrap items-end justify-between gap-4">
@@ -310,6 +380,12 @@ export default async function AlumniPage({
       </div>
     </div>
   );
+}
+
+function extractYear(value: string | null | undefined): string | null {
+  if (!value) return null;
+  const match = value.match(/\b(19|20)\d{2}\b/);
+  return match ? match[0] : null;
 }
 
 function getSingle(value?: string | string[]) {
@@ -360,6 +436,9 @@ function buildReturnTo(input: {
   jemeRole: string[];
   board: string[];
   head: string[];
+  pastFirm: string[];
+  pastRole: string[];
+  gradYear: string[];
   page: number;
 }) {
   const params = new URLSearchParams();
@@ -373,6 +452,9 @@ function buildReturnTo(input: {
   input.jemeRole.forEach((value) => params.append("jemeRole", value));
   input.board.forEach((value) => params.append("board", value));
   input.head.forEach((value) => params.append("head", value));
+  input.pastFirm.forEach((value) => params.append("pastFirm", value));
+  input.pastRole.forEach((value) => params.append("pastRole", value));
+  input.gradYear.forEach((value) => params.append("gradYear", value));
   params.set("page", String(input.page));
 
   const queryString = params.toString();
@@ -389,6 +471,9 @@ function buildPaginationBase(input: {
   jemeRole: string[];
   board: string[];
   head: string[];
+  pastFirm: string[];
+  pastRole: string[];
+  gradYear: string[];
 }) {
   const params = new URLSearchParams();
 
@@ -401,6 +486,9 @@ function buildPaginationBase(input: {
   input.jemeRole.forEach((value) => params.append("jemeRole", value));
   input.board.forEach((value) => params.append("board", value));
   input.head.forEach((value) => params.append("head", value));
+  input.pastFirm.forEach((value) => params.append("pastFirm", value));
+  input.pastRole.forEach((value) => params.append("pastRole", value));
+  input.gradYear.forEach((value) => params.append("gradYear", value));
 
   const queryString = params.toString();
   return queryString ? `/directory/alumni?${queryString}` : "/directory/alumni";

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "../../lib/prisma";
 import { getCountryName } from "../../lib/countries";
+import { computeAgeGroup } from "../../lib/age-group";
 import InteractiveGradientText from "../../components/InteractiveGradientText";
 
 type PageProps = {
@@ -25,6 +26,11 @@ export default async function AlumniProfilePage({
   if (!alumni) {
     notFound();
   }
+
+  // Compute age group dynamically so it stays correct every year,
+  // falling back to the stored DB value if no graduation year is available.
+  const ageGroup =
+    computeAgeGroup(alumni.jeme_ending_period) ?? alumni.age_group;
 
   const backHref = returnTo || "/directory/alumni";
 
@@ -74,7 +80,7 @@ export default async function AlumniProfilePage({
                   <Tag>{getCountryName(alumni.current_country)}</Tag>
                 )}
                 {alumni.current_industry && <Tag>{alumni.current_industry}</Tag>}
-                {alumni.age_group && <Tag>{alumni.age_group}</Tag>}
+                {ageGroup && <Tag>{ageGroup}</Tag>}
               </div>
             </div>
           </div>
@@ -97,7 +103,8 @@ export default async function AlumniProfilePage({
                   }
                 />
                 <InfoCard label="Current Industry" value={alumni.current_industry} />
-                <InfoCard label="Age Group" value={alumni.age_group} />
+                <InfoCard label="Age Group" value={ageGroup} />
+                <InfoCard label="Past Notable Firms" value={alumni.notable_past_firms} />
               </div>
             </section>
 
@@ -133,6 +140,7 @@ export default async function AlumniProfilePage({
 
               <div className="mt-6 grid gap-4 md:grid-cols-3">
                 <InfoCard label="JEME Role" value={alumni.jeme_role} />
+                <InfoCard label="JEME Graduation Date" value={alumni.jeme_ending_period} />
 
                 <StatusCard
                   label="Member of the Board"

@@ -18,6 +18,8 @@ type FilterPanelProps = {
   selectedBoards: string[];
   selectedHeads: string[];
   selectedPastFirms: string[];
+  selectedPastRoles: string[];
+  selectedGradYears: string[];
   countryOptions: Option[];
   roleOptions: Option[];
   companyOptions: Option[];
@@ -27,6 +29,8 @@ type FilterPanelProps = {
   boardOptions: Option[];
   headOptions: Option[];
   pastFirmOptions: Option[];
+  pastRoleOptions: Option[];
+  gradYearOptions: Option[];
 };
 
 type DropdownMultiSelectProps = {
@@ -48,6 +52,8 @@ export default function FilterPanel({
   selectedBoards,
   selectedHeads,
   selectedPastFirms,
+  selectedPastRoles,
+  selectedGradYears,
   countryOptions,
   roleOptions,
   companyOptions,
@@ -57,6 +63,8 @@ export default function FilterPanel({
   boardOptions,
   headOptions,
   pastFirmOptions,
+  pastRoleOptions,
+  gradYearOptions,
 }: FilterPanelProps) {
   const activeFilters = useMemo(() => {
     const mapSelected = (
@@ -75,10 +83,12 @@ export default function FilterPanel({
       ...mapSelected("Company", selectedCompanies, companyOptions),
       ...mapSelected("Industry", selectedIndustries, industryOptions),
       ...mapSelected("Age", selectedAgeGroups, ageGroupOptions),
-      ...mapSelected("JEME", selectedJemeRoles, jemeRoleOptions),
+      ...mapSelected("JEME Role", selectedJemeRoles, jemeRoleOptions),
       ...mapSelected("Board", selectedBoards, boardOptions),
-      ...mapSelected("Head", selectedHeads, headOptions),
-      ...mapSelected("Past", selectedPastFirms, pastFirmOptions),
+      ...mapSelected("Dept. Head", selectedHeads, headOptions),
+      ...mapSelected("Past Firm", selectedPastFirms, pastFirmOptions),
+      ...mapSelected("Past Role", selectedPastRoles, pastRoleOptions),
+      ...mapSelected("Grad Year", selectedGradYears, gradYearOptions),
     ];
   }, [
     selectedCountries,
@@ -90,6 +100,8 @@ export default function FilterPanel({
     selectedBoards,
     selectedHeads,
     selectedPastFirms,
+    selectedPastRoles,
+    selectedGradYears,
     countryOptions,
     roleOptions,
     companyOptions,
@@ -99,12 +111,14 @@ export default function FilterPanel({
     boardOptions,
     headOptions,
     pastFirmOptions,
+    pastRoleOptions,
+    gradYearOptions,
   ]);
 
   return (
     <form
       action="/directory/alumni"
-      className="space-y-6 rounded-[30px] border border-[#E7DCDD] bg-white/90 p-6 shadow-[0_14px_30px_rgba(0,0,0,0.05)] backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_42px_rgba(194,26,39,0.08)]"
+      className="space-y-6 rounded-[30px] border border-[#E7DCDD] bg-white/90 p-6 shadow-[0_14px_30px_rgba(0,0,0,0.05)] backdrop-blur"
     >
       <div className="space-y-4">
         <div>
@@ -118,20 +132,20 @@ export default function FilterPanel({
 
         <div>
           <label className="mb-2 block text-sm font-medium text-[#615F59]">
-            Search by name
+            Search by name, firm or role
           </label>
           <input
             type="text"
             name="q"
             defaultValue={query}
-            placeholder="Type a name"
+            placeholder="Type a name, firm or role"
             className="w-full rounded-full border border-[#E7DCDD] bg-[#FCFAFA] px-5 py-3.5 text-base outline-none transition focus:border-[#C21A27]"
           />
         </div>
       </div>
 
       <div className="grid gap-5 xl:grid-cols-2">
-        <section className="rounded-[24px] border border-[#EFE4E5] bg-[#FCFAFA] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(194,26,39,0.06)]">
+        <section className="rounded-[24px] border border-[#EFE4E5] bg-[#FCFAFA] p-5">
           <h3 className="text-2xl font-semibold tracking-tight leading-tight">
             Professional
           </h3>
@@ -168,10 +182,26 @@ export default function FilterPanel({
               selectedValues={selectedIndustries}
               placeholder="All industries"
             />
+
+            <DropdownMultiSelect
+              label="Past Firms"
+              name="pastFirm"
+              options={pastFirmOptions}
+              selectedValues={selectedPastFirms}
+              placeholder="All past firms"
+            />
+
+            <DropdownMultiSelect
+              label="Past Roles"
+              name="pastRole"
+              options={pastRoleOptions}
+              selectedValues={selectedPastRoles}
+              placeholder="All past roles"
+            />
           </div>
         </section>
 
-        <section className="rounded-[24px] border border-[#EFE4E5] bg-[#FCFAFA] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(194,26,39,0.06)]">
+        <section className="rounded-[24px] border border-[#EFE4E5] bg-[#FCFAFA] p-5">
           <h3 className="text-2xl font-semibold tracking-tight leading-tight">
             Network
           </h3>
@@ -208,6 +238,14 @@ export default function FilterPanel({
               selectedValues={selectedHeads}
               placeholder="All"
             />
+
+            <DropdownMultiSelect
+              label="JEME Graduation Year"
+              name="gradYear"
+              options={gradYearOptions}
+              selectedValues={selectedGradYears}
+              placeholder="All years"
+            />
           </div>
         </section>
       </div>
@@ -217,7 +255,7 @@ export default function FilterPanel({
           {activeFilters.map((item, index) => (
             <div
               key={`${item.label}-${item.value}-${index}`}
-              className="rounded-full bg-[#F5E8EA] px-3 py-1.5 text-xs font-medium text-[#A33640] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_18px_rgba(194,26,39,0.08)]"
+              className="rounded-full bg-[#F5E8EA] px-3 py-1.5 text-xs font-medium text-[#A33640]"
             >
               {item.label}: {item.value}
             </div>

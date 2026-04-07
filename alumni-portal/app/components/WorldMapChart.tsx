@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import WorldMap, {
   type CountryContext,
   type ISOCode,
@@ -30,6 +30,52 @@ export default function WorldMapChart({ data }: Props) {
   );
 
   const maxValue = Math.max(...normalizedData.map((item) => item.value), 1);
+
+  const tooltipTextFn = useCallback(
+    (context: CountryContext) =>
+      `${context.countryName}: ${context.countryValue ?? 0} alumni`,
+    [],
+  );
+
+  const styleFn = useCallback(
+    (context: CountryContext) => {
+      const value = context.countryValue ?? 0;
+
+      if (!value) {
+        return {
+          fill: "#EDE5E6",
+          stroke: "rgba(100,80,85,0.30)",
+          strokeWidth: 0.5,
+          cursor: "default",
+          outline: "none",
+          transition: "fill 160ms ease, filter 180ms ease",
+          transformBox: "fill-box",
+          transformOrigin: "center",
+        };
+      }
+
+      const ratio = value / maxValue;
+
+      let fill = "#E85A66";
+      if (ratio > 0.66) {
+        fill = "#8F1320";
+      } else if (ratio > 0.33) {
+        fill = "#C21A27";
+      }
+
+      return {
+        fill,
+        stroke: "rgba(255,255,255,0.20)",
+        strokeWidth: 0.8,
+        cursor: "pointer",
+        outline: "none",
+        transition: "fill 160ms ease, filter 180ms ease",
+        transformBox: "fill-box",
+        transformOrigin: "center",
+      };
+    },
+    [maxValue],
+  );
 
   useEffect(() => {
     if (!mapWrapperRef.current) return;
@@ -75,47 +121,8 @@ export default function WorldMapChart({ data }: Props) {
           size="responsive"
           tooltipBgColor="#1A1014"
           tooltipTextColor="#F0EAEA"
-          tooltipTextFunction={(context: CountryContext) =>
-            `${context.countryName}: ${context.countryValue ?? 0} alumni`
-          }
-          styleFunction={(context: CountryContext) => {
-            const value = context.countryValue ?? 0;
-
-            if (!value) {
-              return {
-                fill: "#EDE5E6",
-                stroke: "rgba(100,80,85,0.30)",
-                strokeWidth: 0.5,
-                cursor: "default",
-                outline: "none",
-                transition:
-                  "fill 160ms ease, transform 180ms ease, filter 180ms ease",
-                transformBox: "fill-box",
-                transformOrigin: "center",
-              };
-            }
-
-            const ratio = value / maxValue;
-
-            let fill = "#E85A66";
-            if (ratio > 0.66) {
-              fill = "#8F1320";
-            } else if (ratio > 0.33) {
-              fill = "#C21A27";
-            }
-
-            return {
-              fill,
-              stroke: "rgba(255,255,255,0.20)",
-              strokeWidth: 0.8,
-              cursor: "pointer",
-              outline: "none",
-              transition:
-                "fill 160ms ease, transform 180ms ease, filter 180ms ease",
-              transformBox: "fill-box",
-              transformOrigin: "center",
-            };
-          }}
+          tooltipTextFunction={tooltipTextFn}
+          styleFunction={styleFn}
         />
         </div>
       </div>
@@ -168,7 +175,6 @@ export default function WorldMapChart({ data }: Props) {
         }
 
         .worldmap-hover svg path:hover {
-          transform: translateY(-3px) scale(1.06);
           filter: drop-shadow(0 8px 14px rgba(194, 26, 39, 0.32));
         }
 

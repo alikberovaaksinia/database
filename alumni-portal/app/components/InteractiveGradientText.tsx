@@ -54,6 +54,8 @@ export default function InteractiveGradientText({
           WebkitBackgroundClip: "text",
           backgroundClip: "text",
           WebkitTextFillColor: "transparent",
+          paddingBottom: "0.2em",
+          marginBottom: "-0.2em",
         }}
       >
         {children}

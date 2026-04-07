@@ -7,19 +7,24 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "db:generate": "prisma generate"
+    "db:generate": "prisma generate",
+    "sync:age-groups": "npx tsx scripts/sync-age-groups.ts",
+    "import:csv": "node scripts/import-csv-to-postgres.js",
+    "import:csv:dry": "node scripts/import-csv-to-postgres.js --dry-run"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0",
     "@prisma/adapter-pg": "^7.5.0",
-    "framer-motion": "^12.38.0",
-    "react-svg-worldmap": "^2.0.1",
     "@prisma/client": "^7.5.0",
+    "anthropic": "^0.0.0",
     "dotenv": "^17.3.1",
+    "framer-motion": "^12.38.0",
     "next": "16.2.1",
     "pg": "^8.20.0",
     "prisma": "^7.5.0",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-svg-worldmap": "^2.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
