@@ -27,11 +27,11 @@ export default function InteractiveHeroTitle({
 
   const gradient = active
     ? variant === "light"
-      ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, #ffb8bc 0%, #ffd6d8 32%, #ffffff 62%)`
-      : `radial-gradient(circle at ${pos.x}% ${pos.y}%, #c21a27 0%, #8a1520 32%, #1d1d1b 62%)`
+      ? `radial-gradient(circle at ${pos.x}% ${pos.y}%, #E89A9E 0%, #F4C7C9 32%, #ffffff 62%)`
+      : `radial-gradient(circle at ${pos.x}% ${pos.y}%, #A60F1A 0%, #7A0C14 32%, #1A1A1A 62%)`
     : variant === "light"
       ? "linear-gradient(90deg, #ffffff 0%, #ffffff 100%)"
-      : "linear-gradient(90deg, #1d1d1b 0%, #1d1d1b 100%)";
+      : "linear-gradient(90deg, #1A1A1A 0%, #1A1A1A 100%)";
 
   return (
     <div

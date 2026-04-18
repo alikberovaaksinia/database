@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useRouter } from "next/navigation";
 import WorldMap, {
   type CountryContext,
   type ISOCode,
@@ -17,6 +18,7 @@ type Props = {
 
 export default function WorldMapChart({ data }: Props) {
   const mapWrapperRef = useRef<HTMLDivElement | null>(null);
+  const router = useRouter();
 
   const normalizedData = useMemo(
     () =>
@@ -31,6 +33,14 @@ export default function WorldMapChart({ data }: Props) {
 
   const maxValue = Math.max(...normalizedData.map((item) => item.value), 1);
 
+  const onCountryClick = useCallback(
+    (context: CountryContext) => {
+      if (!context.countryValue) return;
+      router.push(`/directory/alumni?country=${encodeURIComponent(context.countryCode)}`);
+    },
+    [router],
+  );
+
   const tooltipTextFn = useCallback(
     (context: CountryContext) =>
       `${context.countryName}: ${context.countryValue ?? 0} alumni`,
@@ -43,7 +53,7 @@ export default function WorldMapChart({ data }: Props) {
 
       if (!value) {
         return {
-          fill: "#EDE5E6",
+          fill: "#E6E6E6",
           stroke: "rgba(100,80,85,0.30)",
           strokeWidth: 0.5,
           cursor: "default",
@@ -56,11 +66,11 @@ export default function WorldMapChart({ data }: Props) {
 
       const ratio = value / maxValue;
 
-      let fill = "#E85A66";
+      let fill = "#D65A61";
       if (ratio > 0.66) {
-        fill = "#8F1320";
+        fill = "#7A0C14";
       } else if (ratio > 0.33) {
-        fill = "#C21A27";
+        fill = "#A60F1A";
       }
 
       return {
@@ -104,13 +114,13 @@ export default function WorldMapChart({ data }: Props) {
       {/* ── Map with depth treatment ── */}
       <div className="relative">
         {/* Ambient crimson glow behind the SVG */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[55%] w-[55%] rounded-full bg-[#C21A27]/[9%] blur-[90px]" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[55%] w-[55%] rounded-full bg-[#A60F1A]/[9%] blur-[90px]" />
 
         {/* Edge vignettes — bleed into dark card background */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#0C0A0D] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#0C0A0D] to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-12 bg-gradient-to-b from-[#0C0A0D]/60 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-10 bg-gradient-to-t from-[#12080E]/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#1A1A1A] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#1A1A1A] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-12 bg-gradient-to-b from-[#1A1A1A]/60 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-10 bg-gradient-to-t from-[#1A1A1A]/50 to-transparent" />
 
         <div
           ref={mapWrapperRef}
@@ -119,23 +129,24 @@ export default function WorldMapChart({ data }: Props) {
         <WorldMap
           data={normalizedData}
           size="responsive"
-          tooltipBgColor="#1A1014"
-          tooltipTextColor="#F0EAEA"
+          tooltipBgColor="#1A1A1A"
+          tooltipTextColor="#E6E6E6"
           tooltipTextFunction={tooltipTextFn}
           styleFunction={styleFn}
+          onClickFunction={onCountryClick}
         />
         </div>
       </div>
 
       {/* Legend */}
       <div className="mt-2 flex flex-wrap items-center justify-center gap-6 border-t border-white/6 pt-4 pb-2">
-        <LegendDot color="#E85A66" label="Light presence" />
-        <LegendDot color="#C21A27" label="Medium presence" />
-        <LegendDot color="#8F1320" label="High presence" />
+        <LegendDot color="#D65A61" label="Light presence" />
+        <LegendDot color="#A60F1A" label="Medium presence" />
+        <LegendDot color="#7A0C14" label="High presence" />
         <span className="h-3 w-px bg-white/15" />
         <div className="inline-flex items-center gap-2.5">
-          <span className="h-2.5 w-2.5 rounded-sm bg-[#221820] ring-1 ring-white/20" />
-          <span className="text-xs font-medium text-white/30">No data</span>
+          <span className="h-2.5 w-2.5 rounded-sm bg-[#E6E6E6] ring-1 ring-black/10" />
+          <span className="text-xs font-medium text-[#737373]">No data</span>
         </div>
       </div>
 
@@ -175,7 +186,7 @@ export default function WorldMapChart({ data }: Props) {
         }
 
         .worldmap-hover svg path:hover {
-          filter: drop-shadow(0 8px 14px rgba(194, 26, 39, 0.32));
+          filter: drop-shadow(0 8px 14px rgba(166,15,26, 0.32));
         }
 
         .worldmap-hover [role="tooltip"],
@@ -206,7 +217,7 @@ function LegendDot({
           boxShadow: `0 0 8px ${color}99`,
         }}
       />
-      <span className="text-xs font-medium text-white/52">{label}</span>
+      <span className="text-xs font-medium text-[#A6A6A6]">{label}</span>
     </div>
   );
 }

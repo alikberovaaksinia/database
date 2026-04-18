@@ -35,19 +35,19 @@ export default async function AlumniProfilePage({
   const backHref = returnTo || "/directory/alumni";
 
   return (
-    <div className="min-h-screen bg-[#FCFAFA] text-[#1D1D1B]">
+    <div className="min-h-screen bg-[#E6E6E6] text-[#1A1A1A]">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <div className="mb-8">
           <Link
             href={backHref}
-            className="inline-flex items-center gap-2 rounded-full border border-[#E7DCDD] bg-white px-4 py-2 text-sm font-medium text-[#C21A27] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#C21A27] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#C21A27]/12"
+            className="rounded-full border border-[#D9D9D9] bg-white px-4 py-2 text-sm font-medium text-[#A60F1A] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#A60F1A] hover:text-white focus:outline-none focus:ring-4 focus:ring-[#A60F1A]/12"
           >
-            ← Back to alumni list
+            Back to alumni list
           </Link>
         </div>
 
-        <div className="overflow-hidden rounded-[36px] shadow-[0_24px_60px_rgba(194,26,39,0.25)]">
-          <div className="relative bg-[linear-gradient(135deg,#C21A27_0%,#D94A57_40%,#8F1320_100%)] px-8 py-10 text-white">
+        <div className="overflow-hidden rounded-[36px] shadow-[0_24px_60px_rgba(166,15,26,0.25)]">
+          <div className="relative bg-[linear-gradient(135deg,#A60F1A_0%,#D65A61_40%,#7A0C14_100%)] px-8 py-10 text-white">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent_35%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_30%)]" />
 
@@ -75,18 +75,11 @@ export default async function AlumniProfilePage({
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                {alumni.current_country && (
-                  <Tag>{getCountryName(alumni.current_country)}</Tag>
-                )}
-                {alumni.current_industry && <Tag>{alumni.current_industry}</Tag>}
-                {ageGroup && <Tag>{ageGroup}</Tag>}
-              </div>
             </div>
           </div>
 
-          <div className="grid gap-6 bg-[#FCFAFA] p-8 xl:grid-cols-[1.15fr_0.85fr]">
-            <section className="rounded-[30px] border border-[#E7DCDD] bg-white p-7">
+          <div className="grid gap-6 bg-[#E6E6E6] p-8 xl:grid-cols-[1.15fr_0.85fr]">
+            <section className="rounded-[30px] border border-[#D9D9D9] bg-white p-7">
               <h2 className="text-3xl font-semibold tracking-tight">
                 Current Information
               </h2>
@@ -108,7 +101,7 @@ export default async function AlumniProfilePage({
               </div>
             </section>
 
-            <section className="rounded-[30px] border border-[#E7DCDD] bg-white p-7">
+            <section className="rounded-[30px] border border-[#D9D9D9] bg-white p-7">
               <h2 className="text-3xl font-semibold tracking-tight">
                 Contact Information
               </h2>
@@ -118,27 +111,27 @@ export default async function AlumniProfilePage({
                 <InfoCard label="Phone" value={alumni.phone_number} />
 
                 {alumni.linkedin && (
-                  <div className="rounded-[22px] border border-[#E7DCDD] bg-[#FCFAFA] p-5">
-                    <div className="text-sm text-[#7F7677]">LinkedIn</div>
+                  <div className="rounded-[22px] border border-[#D9D9D9] bg-[#E6E6E6] p-5">
+                    <div className="text-sm text-[#737373]">LinkedIn</div>
                     <a
                       href={alumni.linkedin}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-3 inline-flex items-center gap-2 text-base font-semibold text-[#C21A27] transition hover:gap-3"
+                      className="mt-3 inline-flex items-center text-base font-semibold text-[#A60F1A]"
                     >
-                      Open LinkedIn →
+                      Open LinkedIn
                     </a>
                   </div>
                 )}
               </div>
             </section>
 
-            <section className="rounded-[30px] border border-[#E7DCDD] bg-white p-7 xl:col-span-2">
+            <section className="rounded-[30px] border border-[#D9D9D9] bg-white p-7 xl:col-span-2">
               <h2 className="text-3xl font-semibold tracking-tight">
                 Role in JEME
               </h2>
 
-              <div className="mt-6 grid gap-4 md:grid-cols-3">
+              <div className="mt-6 grid gap-4 sm:grid-cols-2 sm:[grid-auto-rows:1fr]">
                 <InfoCard label="JEME Role" value={alumni.jeme_role} />
                 <InfoCard label="JEME Graduation Date" value={alumni.jeme_ending_period} />
 
@@ -172,8 +165,8 @@ function InfoCard({
   value: string | null | undefined;
 }) {
   return (
-    <div className="rounded-[22px] border border-[#E7DCDD] bg-[#FCFAFA] p-5">
-      <div className="text-sm text-[#7F7677]">{label}</div>
+    <div className="rounded-[22px] border border-[#D9D9D9] bg-[#E6E6E6] p-5">
+      <div className="text-sm text-[#737373]">{label}</div>
       <div className="mt-2 text-2xl font-semibold">
         {value && value.trim() ? value : "—"}
       </div>
@@ -195,20 +188,20 @@ function StatusCard({
   const normalized = normalizeBoolean(value);
 
   return (
-    <div className="rounded-[22px] border border-[#E7DCDD] bg-[#FCFAFA] p-5">
-      <div className="text-sm text-[#7F7677]">{label}</div>
+    <div className="rounded-[22px] border border-[#D9D9D9] bg-[#E6E6E6] p-5">
+      <div className="text-sm text-[#737373]">{label}</div>
 
       <div className="mt-4">
         {normalized === null ? (
-          <span className="inline-flex rounded-full bg-[#F3EEEE] px-4 py-2 text-sm font-semibold text-[#7F7677]">
+          <span className="inline-flex rounded-full bg-[#E6E6E6] px-4 py-2 text-sm font-semibold text-[#737373]">
             Not specified
           </span>
         ) : normalized ? (
-          <span className="inline-flex rounded-full bg-[#F5E8EA] px-4 py-2 text-sm font-semibold text-[#A33640]">
+          <span className="inline-flex rounded-full bg-[#F4C7C9] px-4 py-2 text-sm font-semibold text-[#A60F1A]">
             {trueLabel}
           </span>
         ) : (
-          <span className="inline-flex rounded-full bg-[#F3EEEE] px-4 py-2 text-sm font-semibold text-[#615F59]">
+          <span className="inline-flex rounded-full bg-[#E6E6E6] px-4 py-2 text-sm font-semibold text-[#5C5A56]">
             {falseLabel}
           </span>
         )}
@@ -217,13 +210,6 @@ function StatusCard({
   );
 }
 
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-full bg-white/20 px-4 py-2 text-sm font-semibold backdrop-blur">
-      {children}
-    </span>
-  );
-}
 
 function normalizeBoolean(value: string | null | undefined): boolean | null {
   if (!value) return null;

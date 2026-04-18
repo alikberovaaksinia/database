@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { getCountryName } from "../lib/countries";
+import { normalizeIndustry } from "../lib/industry";
+import { normalizeSeniority } from "../lib/seniority";
+import ClientPagination from "./ClientPagination";
 
 type AlumniRow = {
   db_id: number | string;
@@ -7,9 +10,17 @@ type AlumniRow = {
   current_role: string | null;
   current_firm: string | null;
   current_country: string | null;
+  current_industry: string | null;
+  current_role_seniority: string | null;
+  jeme_role: string | null;
+  jeme_ending_period: string | null;
 };
 
-type PageItem = number | "ellipsis";
+function extractYear(value: string | null | undefined): string | null {
+  if (!value) return null;
+  const match = value.match(/\b(19|20)\d{2}\b/);
+  return match ? match[0] : null;
+}
 
 export default function AlumniTable({
   alumni,
@@ -26,11 +37,11 @@ export default function AlumniTable({
 }) {
   if (!alumni.length) {
     return (
-      <div className="rounded-[28px] border border-[#E7DCDD] bg-white/92 p-8 shadow-[0_18px_40px_rgba(0,0,0,0.05)] backdrop-blur">
-        <div className="text-2xl font-semibold tracking-tight text-[#1D1D1B]">
+      <div className="rounded-[28px] border border-[#D9D9D9] bg-white/92 p-8 shadow-[0_18px_40px_rgba(0,0,0,0.05)] backdrop-blur">
+        <div className="text-2xl font-semibold tracking-tight text-[#1A1A1A]">
           No alumni found
         </div>
-        <p className="mt-3 max-w-xl text-base leading-8 text-[#615F59]">
+        <p className="mt-3 max-w-xl text-base leading-8 text-[#5C5A56]">
           Try adjusting your filters or search query to see more results.
         </p>
       </div>
@@ -38,29 +49,33 @@ export default function AlumniTable({
   }
 
   return (
-    <div className="space-y-4">
-      <div className="hidden grid-cols-[minmax(260px,1.4fr)_minmax(180px,1fr)_minmax(180px,1fr)_140px_120px] gap-6 px-8 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#9B6A71] lg:grid">
+    <div id="alumni-results" className="space-y-4">
+      {/* Column headers — 6-col grid: Name · Role · Company · Industry · Country · Open */}
+      <div className="hidden grid-cols-[minmax(180px,1.4fr)_minmax(130px,1fr)_minmax(130px,1fr)_minmax(110px,0.9fr)_100px_90px] gap-6 px-8 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#737373] lg:grid">
         <div>Name</div>
         <div>Role</div>
         <div>Company</div>
+        <div>Industry</div>
         <div>Country</div>
         <div className="text-right">Profile</div>
       </div>
 
       {alumni.map((person) => {
-        const name = person.full_name?.trim() || "Unknown alumnus";
-        const role = person.current_role?.trim() || "—";
-        const company = person.current_firm?.trim() || "—";
-        const country = person.current_country
-          ? getCountryName(person.current_country)
-          : "—";
+        const name     = person.full_name?.trim() || "Unknown alumnus";
+        const role     = person.current_role?.trim() || "—";
+        const company  = person.current_firm?.trim() || "—";
+        const country  = person.current_country ? getCountryName(person.current_country) : "—";
+        const industry = normalizeIndustry(person.current_industry) || "—";
+        const seniority = normalizeSeniority(person.current_role_seniority) || null;
+        const jemeRole  = person.jeme_role?.trim() || null;
+        const gradYear  = extractYear(person.jeme_ending_period);
 
         const profileHref = `/alumni/${person.db_id}?returnTo=${encodeURIComponent(returnTo)}`;
 
         return (
           <div
             key={String(person.db_id)}
-            className="group relative rounded-[26px] border border-[#E7DCDD] bg-white/92 shadow-[0_14px_30px_rgba(0,0,0,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_42px_rgba(194,26,39,0.10)]"
+            className="group relative rounded-[26px] border border-[#D9D9D9] bg-white/92 shadow-[0_14px_30px_rgba(0,0,0,0.04)] backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_22px_42px_rgba(166,15,26,0.10)]"
           >
             {/* Stretched link — covers the whole card for mouse/touch users.
                 tabIndex={-1} + aria-hidden keeps it out of keyboard/screen-reader
@@ -73,58 +88,69 @@ export default function AlumniTable({
             />
 
             {/* ── Desktop row ── */}
-            <div className="hidden grid-cols-[minmax(260px,1.4fr)_minmax(180px,1fr)_minmax(180px,1fr)_140px_120px] items-center gap-6 px-8 py-6 lg:grid">
+            <div className="hidden grid-cols-[minmax(180px,1.4fr)_minmax(130px,1fr)_minmax(130px,1fr)_minmax(110px,0.9fr)_100px_90px] items-center gap-6 px-8 py-5 lg:grid">
+              {/* Name */}
               <div className="min-w-0">
-                <div className="truncate text-[1.35rem] font-semibold tracking-tight text-[#1D1D1B] transition-colors duration-200 group-hover:text-[#C21A27]">
+                <div className="truncate text-[1.2rem] font-semibold tracking-tight text-[#1A1A1A] transition-colors duration-200 group-hover:text-[#A60F1A]">
                   {name}
                 </div>
               </div>
 
-              <div className="min-w-0 text-[15px] leading-7 text-[#615F59]">
-                <div className="truncate">{role}</div>
+              {/* Role + seniority sub-line */}
+              <div className="min-w-0">
+                <div className="truncate text-[14px] leading-6 text-[#1A1A1A]">{role}</div>
+                {seniority && (
+                  <div className="mt-0.5 text-[11px] font-medium text-[#737373]">{seniority}</div>
+                )}
               </div>
 
-              <div className="min-w-0 text-[15px] leading-7 text-[#615F59]">
+              {/* Company */}
+              <div className="min-w-0 text-[14px] leading-6 text-[#5C5A56]">
                 <div className="truncate">{company}</div>
               </div>
 
-              <div className="text-[15px] leading-7 text-[#615F59]">
+              {/* Industry */}
+              <div className="min-w-0 text-[14px] leading-6 text-[#5C5A56]">
+                <div className="truncate">{industry}</div>
+              </div>
+
+              {/* Country */}
+              <div className="text-[14px] leading-6 text-[#5C5A56]">
                 {country}
               </div>
 
-              {/* relative z-10 lifts the button above the stretched link so
-                  clicks here land on the button, not the background link. */}
+              {/* Open — relative z-10 lifts above the stretched background link */}
               <div className="relative z-10 text-right">
                 <Link
                   href={profileHref}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#E7DCDD] bg-white px-4 py-2 text-sm font-semibold text-[#C21A27] transition-all duration-200 hover:border-[#C21A27] hover:bg-[#C21A27] hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#D9D9D9] bg-white px-4 py-2 text-sm font-semibold text-[#A60F1A] transition-all duration-200 hover:border-[#A60F1A] hover:bg-[#A60F1A] hover:text-white"
                 >
                   Open
-                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">
-                    →
-                  </span>
+                  <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                 </Link>
               </div>
             </div>
 
             {/* ── Mobile card ── */}
-            <div className="space-y-4 px-6 py-6 lg:hidden">
-              <div>
-                <div className="text-2xl font-semibold tracking-tight text-[#1D1D1B] transition-colors duration-200 group-hover:text-[#C21A27]">
-                  {name}
-                </div>
+            <div className="space-y-3 px-6 py-6 lg:hidden">
+              <div className="text-xl font-semibold tracking-tight text-[#1A1A1A] transition-colors duration-200 group-hover:text-[#A60F1A]">
+                {name}
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-2 sm:grid-cols-2">
                 <InfoBlock label="Role" value={role} />
                 <InfoBlock label="Company" value={company} />
+                <InfoBlock label="Industry" value={industry} />
                 <InfoBlock label="Country" value={country} />
+                {seniority && <InfoBlock label="Seniority" value={seniority} />}
+                {jemeRole   && <InfoBlock label="JEME Role" value={jemeRole} />}
+                {gradYear   && <InfoBlock label="Grad Year" value={gradYear} />}
               </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 pt-1">
                 <Link
                   href={profileHref}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#E7DCDD] bg-white px-4 py-2 text-sm font-semibold text-[#C21A27] transition-all duration-200 hover:border-[#C21A27] hover:bg-[#C21A27] hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#D9D9D9] bg-white px-4 py-2 text-sm font-semibold text-[#A60F1A] transition-all duration-200 hover:border-[#A60F1A] hover:bg-[#A60F1A] hover:text-white"
                 >
                   Open profile
                   <span>→</span>
@@ -136,93 +162,13 @@ export default function AlumniTable({
       })}
 
       {totalPages > 1 && (
-        <Pagination
+        <ClientPagination
           currentPage={currentPage}
           totalPages={totalPages}
           baseHref={paginationBase}
         />
       )}
     </div>
-  );
-}
-
-function Pagination({
-  currentPage,
-  totalPages,
-  baseHref,
-}: {
-  currentPage: number;
-  totalPages: number;
-  baseHref: string;
-}) {
-  const pages = buildPages(currentPage, totalPages);
-
-  return (
-    <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-      <PaginationLink
-        href={withPage(baseHref, Math.max(1, currentPage - 1))}
-        disabled={currentPage === 1}
-      >
-        ← Prev
-      </PaginationLink>
-
-      {pages.map((item, index) =>
-        item === "ellipsis" ? (
-          <span
-            key={`ellipsis-${index}`}
-            className="px-2 text-sm font-medium text-[#8A7E7F]"
-          >
-            ...
-          </span>
-        ) : (
-          <Link
-            key={item}
-            href={withPage(baseHref, item)}
-            className={`inline-flex h-11 min-w-11 items-center justify-center rounded-full px-4 text-sm font-semibold transition ${
-              item === currentPage
-                ? "bg-[#C21A27] text-white shadow-[0_12px_24px_rgba(194,26,39,0.18)]"
-                : "border border-[#E7DCDD] bg-white text-[#615F59] hover:-translate-y-0.5 hover:border-[#C21A27] hover:text-[#C21A27]"
-            }`}
-          >
-            {item}
-          </Link>
-        ),
-      )}
-
-      <PaginationLink
-        href={withPage(baseHref, Math.min(totalPages, currentPage + 1))}
-        disabled={currentPage === totalPages}
-      >
-        Next →
-      </PaginationLink>
-    </div>
-  );
-}
-
-function PaginationLink({
-  href,
-  disabled,
-  children,
-}: {
-  href: string;
-  disabled: boolean;
-  children: React.ReactNode;
-}) {
-  if (disabled) {
-    return (
-      <span className="inline-flex h-11 items-center justify-center rounded-full border border-[#EFE4E5] bg-[#F8F4F4] px-4 text-sm font-semibold text-[#B8ACAD]">
-        {children}
-      </span>
-    );
-  }
-
-  return (
-    <Link
-      href={href}
-      className="inline-flex h-11 items-center justify-center rounded-full border border-[#E7DCDD] bg-white px-4 text-sm font-semibold text-[#615F59] transition hover:-translate-y-0.5 hover:border-[#C21A27] hover:text-[#C21A27]"
-    >
-      {children}
-    </Link>
   );
 }
 
@@ -234,33 +180,12 @@ function InfoBlock({
   value: string;
 }) {
   return (
-    <div className="rounded-[18px] bg-[#FCFAFA] px-4 py-3 ring-1 ring-[#F1E7E8] transition-all duration-300 group-hover:-translate-y-0.5">
-      <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#9B6A71]">
+    <div className="rounded-[18px] bg-[#E6E6E6] px-4 py-3 ring-1 ring-[#F4C7C9] transition-all duration-300 group-hover:-translate-y-0.5">
+      <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#737373]">
         {label}
       </div>
-      <div className="mt-1 text-sm leading-6 text-[#615F59]">{value}</div>
+      <div className="mt-1 text-sm leading-6 text-[#5C5A56]">{value}</div>
     </div>
   );
 }
 
-function withPage(baseHref: string, page: number) {
-  const url = new URL(baseHref, "http://localhost");
-  url.searchParams.set("page", String(page));
-  return `${url.pathname}${url.search}`;
-}
-
-function buildPages(currentPage: number, totalPages: number): PageItem[] {
-  if (totalPages <= 7) {
-    return Array.from({ length: totalPages }, (_, i) => i + 1);
-  }
-
-  if (currentPage <= 3) {
-    return [1, 2, 3, 4, "ellipsis", totalPages];
-  }
-
-  if (currentPage >= totalPages - 2) {
-    return [1, "ellipsis", totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
-  }
-
-  return [1, "ellipsis", currentPage - 1, currentPage, currentPage + 1, "ellipsis", totalPages];
-}

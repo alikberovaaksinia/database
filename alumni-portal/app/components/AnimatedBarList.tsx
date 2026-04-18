@@ -13,12 +13,12 @@ type Props = {
 };
 
 const COLORS = [
-  "#C21A27",
-  "#D94A57",
-  "#8F1320",
-  "#E6B8BC",
-  "#B45C66",
-  "#6E0D15",
+  "#A60F1A",
+  "#D65A61",
+  "#7A0C14",
+  "#E89A9E",
+  "#D65A61",
+  "#5A0008",
 ];
 
 export default function AnimatedBarList({ data }: Props) {
@@ -27,7 +27,7 @@ export default function AnimatedBarList({ data }: Props) {
   const max = Math.max(...data.map((item) => item.count), 1);
 
   if (data.length === 0) {
-    return <div className="text-sm text-[#7A7474]">No data available.</div>;
+    return <div className="text-sm text-[#737373]">No data available.</div>;
   }
 
   return (
@@ -46,7 +46,7 @@ export default function AnimatedBarList({ data }: Props) {
               <span>{item.count}</span>
             </div>
 
-            <div className="h-3 bg-[#F3ECEC] rounded-full overflow-hidden">
+            <div className="h-3 bg-[#E6E6E6] rounded-full overflow-hidden">
               <motion.div
                 key={`${hovered}-${item.label}`}
                 initial={{ width: 0 }}

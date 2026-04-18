@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type GroupRow = { label: string; count: number };
 type Props = { data: GroupRow[]; total?: number };
@@ -162,8 +163,13 @@ function buildBasePaths(tier3Nodes: PositionedNode[], baseY: number): string {
 }
 
 export default function JemeOrgChart({ data }: Props) {
+  const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const [cw, setCw] = useState(600);
+
+  const handleRoleClick = (label: string) => {
+    router.push(`/directory/alumni?jemeRole=${encodeURIComponent(label)}`);
+  };
 
   useEffect(() => {
     const el = containerRef.current;
@@ -237,12 +243,13 @@ export default function JemeOrgChart({ data }: Props) {
                 tier={n.tier}
                 w={n.w}
                 h={n.h}
+                onClick={() => handleRoleClick(n.label)}
               />
             </div>
           ))}
           {baseItems.length > 0 && (
             <div className="absolute left-0" style={{ top: baseY, width: cw }}>
-              <BaseBar items={baseItems} total={grandTotal} />
+              <BaseBar items={baseItems} total={grandTotal} onItemClick={handleRoleClick} />
             </div>
           )}
         </div>
@@ -280,6 +287,7 @@ export default function JemeOrgChart({ data }: Props) {
                     tier={tier}
                     w={w}
                     h={h}
+                    onClick={() => handleRoleClick(row.label)}
                   />
                 );
               })}
@@ -290,7 +298,7 @@ export default function JemeOrgChart({ data }: Props) {
       {baseItems2.length > 0 && (
         <>
           <div className="mx-auto h-5 w-px bg-gradient-to-b from-white/[0.14] to-transparent" />
-          <BaseBar items={baseItems2} total={total2} />
+          <BaseBar items={baseItems2} total={total2} onItemClick={handleRoleClick} />
         </>
       )}
     </div>
@@ -302,35 +310,35 @@ const TIER_STYLES: Record<
   { border: string; bg: string; shadow: string; labelColor: string }
 > = {
   1: {
-    border: "border-[#C21A27]/[0.40]",
-    bg: "bg-[#C21A27]/[0.10]",
+    border: "border-[#A60F1A]/[0.40]",
+    bg: "bg-[#A60F1A]/[0.10]",
     shadow:
-      "shadow-[0_8px_28px_rgba(194,26,39,0.22),inset_0_1px_0_rgba(255,255,255,0.07)]",
-    labelColor: "text-white/90",
+      "shadow-[0_8px_28px_rgba(166,15,26,0.22),inset_0_1px_0_rgba(255,255,255,0.07)]",
+    labelColor: "text-white",
   },
   2: {
-    border: "border-white/[0.12]",
-    bg: "bg-white/[0.055]",
+    border: "border-[#404040]",
+    bg: "bg-[#1C1C1C]",
     shadow:
       "shadow-[0_6px_20px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.05)]",
-    labelColor: "text-white/80",
+    labelColor: "text-[#E6E6E6]",
   },
   3: {
-    border: "border-white/[0.08]",
-    bg: "bg-white/[0.035]",
+    border: "border-[#404040]",
+    bg: "bg-[#1A1A1A]",
     shadow:
       "shadow-[0_4px_14px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.04)]",
-    labelColor: "text-white/70",
+    labelColor: "text-[#E6E6E6]",
   },
   4: {
-    border: "border-white/[0.06]",
-    bg: "bg-white/[0.02]",
+    border: "border-[#404040]",
+    bg: "bg-[#1A1A1A]",
     shadow: "shadow-[0_2px_10px_rgba(0,0,0,0.20)]",
-    labelColor: "text-white/60",
+    labelColor: "text-[#A6A6A6]",
   },
 };
 
-function BaseBar({ items, total }: { items: GroupRow[]; total: number }) {
+function BaseBar({ items, total, onItemClick }: { items: GroupRow[]; total: number; onItemClick?: (label: string) => void }) {
   const s = TIER_STYLES[4];
   return (
     <div className="flex w-full gap-2">
@@ -339,14 +347,18 @@ function BaseBar({ items, total }: { items: GroupRow[]; total: number }) {
         return (
           <div
             key={item.label}
-            className={`flex flex-1 items-center justify-between rounded-[20px] border px-6 py-4 backdrop-blur-xl transition-transform duration-200 hover:-translate-y-1 ${s.border} ${s.bg} ${s.shadow}`}
+            className={`flex flex-1 items-center justify-between rounded-[20px] border px-6 py-4 transition-transform duration-200 hover:-translate-y-1 ${s.border} ${s.bg} ${s.shadow} ${onItemClick ? "cursor-pointer" : ""}`}
+            onClick={() => onItemClick?.(item.label)}
+            role={onItemClick ? "button" : undefined}
+            tabIndex={onItemClick ? 0 : undefined}
+            onKeyDown={onItemClick ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onItemClick(item.label); } } : undefined}
           >
-            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-white/50">
+            <span className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#A6A6A6]">
               {item.label}
             </span>
             <div className="flex items-baseline gap-2">
               <span className="text-[1.4rem] font-bold leading-none text-white">{item.count}</span>
-              <span className="text-[0.6rem] font-medium text-white/40">{pct}</span>
+              <span className="text-[0.6rem] font-medium text-[#737373]">{pct}</span>
             </div>
           </div>
         );
@@ -362,6 +374,7 @@ function OrgNode({
   tier,
   w,
   h,
+  onClick,
 }: {
   label: string;
   count: number;
@@ -369,6 +382,7 @@ function OrgNode({
   tier: Tier;
   w: number;
   h: number;
+  onClick?: () => void;
 }) {
   const s = TIER_STYLES[tier];
   const countSize =
@@ -388,13 +402,17 @@ function OrgNode({
 
   return (
     <div
-      className={`flex flex-col items-center justify-center rounded-[16px] border backdrop-blur-xl transition-transform duration-200 hover:-translate-y-1.5 ${s.border} ${s.bg} ${s.shadow}`}
+      className={`flex flex-col items-center justify-center rounded-[16px] border transition-transform duration-200 hover:-translate-y-1.5 ${s.border} ${s.bg} ${s.shadow} ${onClick ? "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25" : ""}`}
       style={{ width: w, height: h }}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } } : undefined}
     >
       <span className={`font-bold leading-none text-white ${countSize}`}>
         {count}
       </span>
-      <span className={`mt-0.5 font-medium leading-none text-white/40 text-[0.6rem]`}>
+      <span className={`mt-0.5 font-medium leading-none text-[#737373] text-[0.6rem]`}>
         {pct}
       </span>
       <span

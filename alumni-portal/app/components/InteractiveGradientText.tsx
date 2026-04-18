@@ -28,14 +28,14 @@ export default function InteractiveGradientText({
 
   const isLight = variant === "light";
 
-  const baseColor = isLight ? "#ffffff" : "#1d1d1b";
+  const baseColor = isLight ? "#ffffff" : "#1A1A1A";
 
   const gradient = hovered
     ? `linear-gradient(90deg,
         ${baseColor} 0%,
-        ${isLight ? "#ffd6da" : "#d94a57"} ${Math.max(0, x - 20)}%,
-        ${isLight ? "#ff8e98" : "#c21a27"} ${x}%,
-        ${isLight ? "#ffd6da" : "#d94a57"} ${Math.min(100, x + 20)}%,
+        ${isLight ? "#F4C7C9" : "#D65A61"} ${Math.max(0, x - 20)}%,
+        ${isLight ? "#E89A9E" : "#A60F1A"} ${x}%,
+        ${isLight ? "#F4C7C9" : "#D65A61"} ${Math.min(100, x + 20)}%,
         ${baseColor} 100%)`
     : `linear-gradient(90deg, ${baseColor} 0%, ${baseColor} 100%)`;
 

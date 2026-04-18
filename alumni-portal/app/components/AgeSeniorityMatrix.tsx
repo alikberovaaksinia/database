@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { matrixKeyToSeniorityCanonical } from "../lib/seniority";
 
 type AgeBySeniorityRow = {
   ageGroup: string;
@@ -15,12 +17,12 @@ const KEYS: SeniorityKey[] = ["Entry", "Mid", "Executive", "Other"];
 
 // Complete literal strings so Tailwind v4 scanner picks them up
 const INTENSITY: { max: number; cls: string }[] = [
-  { max: 0.00, cls: "border-white/[0.05] bg-white/[0.03]" },
-  { max: 0.15, cls: "border-[#C21A27]/[0.12] bg-[#C21A27]/[0.07]" },
-  { max: 0.30, cls: "border-[#C21A27]/[0.20] bg-[#C21A27]/[0.16]" },
-  { max: 0.50, cls: "border-[#C21A27]/[0.28] bg-[#C21A27]/[0.27] shadow-[0_0_10px_rgba(194,26,39,0.18)]" },
-  { max: 0.70, cls: "border-[#C21A27]/[0.38] bg-[#C21A27]/[0.38] shadow-[0_0_16px_rgba(194,26,39,0.28)]" },
-  { max: 1.01, cls: "border-[#C21A27]/[0.52] bg-[#C21A27]/[0.52] shadow-[0_0_22px_rgba(194,26,39,0.42)]" },
+  { max: 0.00, cls: "border-[#404040]/30 bg-[#1A1A1A]" },
+  { max: 0.15, cls: "border-[#A60F1A]/[0.12] bg-[#A60F1A]/[0.07]" },
+  { max: 0.30, cls: "border-[#A60F1A]/[0.20] bg-[#A60F1A]/[0.16]" },
+  { max: 0.50, cls: "border-[#A60F1A]/[0.28] bg-[#A60F1A]/[0.27] shadow-[0_0_10px_rgba(166,15,26,0.18)]" },
+  { max: 0.70, cls: "border-[#A60F1A]/[0.38] bg-[#A60F1A]/[0.38] shadow-[0_0_16px_rgba(166,15,26,0.28)]" },
+  { max: 1.01, cls: "border-[#A60F1A]/[0.52] bg-[#A60F1A]/[0.52] shadow-[0_0_22px_rgba(166,15,26,0.42)]" },
 ];
 
 function intensityCls(ratio: number): string {
@@ -29,9 +31,10 @@ function intensityCls(ratio: number): string {
 }
 
 export default function AgeSeniorityMatrix({ data }: { data: AgeBySeniorityRow[] }) {
+  const router = useRouter();
   const [hovered, setHovered] = useState<{ row: string; col: SeniorityKey } | null>(null);
 
-  if (!data.length) return <div className="text-sm text-white/40">No data available.</div>;
+  if (!data.length) return <div className="text-sm text-[#737373]">No data available.</div>;
 
   const maxVal = Math.max(...data.flatMap((row) => KEYS.map((k) => row[k])), 1);
   const hoveredVal =
@@ -47,16 +50,25 @@ export default function AgeSeniorityMatrix({ data }: { data: AgeBySeniorityRow[]
         style={{ gridTemplateColumns: `68px repeat(${KEYS.length}, minmax(0, 1fr))` }}
       >
         <div />
-        {KEYS.map((k) => (
-          <div
-            key={k}
-            className={`text-center text-[10px] font-semibold uppercase tracking-[0.14em] transition-colors duration-150 ${
-              hovered?.col === k ? "text-white/80" : "text-white/30"
-            }`}
-          >
-            {k}
-          </div>
-        ))}
+        {KEYS.map((k) => {
+          const seniorityCanonical = matrixKeyToSeniorityCanonical(k);
+          return (
+            <div
+              key={k}
+              className={`text-center text-[10px] font-semibold uppercase tracking-[0.14em] transition-colors duration-150 ${
+                hovered?.col === k ? "text-[#E6E6E6]" : "text-[#737373]"
+              } ${seniorityCanonical ? "cursor-pointer hover:text-[#E6E6E6]" : ""}`}
+              onClick={() => {
+                if (seniorityCanonical) router.push(`/directory/alumni?seniority=${encodeURIComponent(seniorityCanonical)}`);
+              }}
+              role={seniorityCanonical ? "button" : undefined}
+              tabIndex={seniorityCanonical ? 0 : undefined}
+              onKeyDown={seniorityCanonical ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); router.push(`/directory/alumni?seniority=${encodeURIComponent(seniorityCanonical)}`); } } : undefined}
+            >
+              {k}
+            </div>
+          );
+        })}
       </div>
 
       {/* Matrix rows */}
@@ -68,9 +80,13 @@ export default function AgeSeniorityMatrix({ data }: { data: AgeBySeniorityRow[]
             style={{ gridTemplateColumns: `68px repeat(${KEYS.length}, minmax(0, 1fr))` }}
           >
             <div
-              className={`pr-1 text-right text-[11px] font-medium transition-colors duration-150 ${
-                hovered?.row === row.ageGroup ? "text-white/80" : "text-white/35"
+              className={`cursor-pointer pr-1 text-right text-[11px] font-medium transition-colors duration-150 hover:text-[#E6E6E6] ${
+                hovered?.row === row.ageGroup ? "text-[#E6E6E6]" : "text-[#737373]"
               }`}
+              onClick={() => router.push(`/directory/alumni?ageGroup=${encodeURIComponent(row.ageGroup)}`)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); router.push(`/directory/alumni?ageGroup=${encodeURIComponent(row.ageGroup)}`); } }}
             >
               {row.ageGroup}
             </div>
@@ -79,21 +95,36 @@ export default function AgeSeniorityMatrix({ data }: { data: AgeBySeniorityRow[]
               const val = row[k];
               const ratio = val / maxVal;
               const isHov = hovered?.row === row.ageGroup && hovered?.col === k;
+              const seniorityCanonical = matrixKeyToSeniorityCanonical(k);
               return (
                 <div
                   key={k}
-                  className={`flex h-10 items-center justify-center rounded-[10px] border backdrop-blur-sm transition-all duration-150 ${intensityCls(ratio)} ${
+                  className={`flex h-10 items-center justify-center rounded-[10px] border transition-all duration-150 ${intensityCls(ratio)} ${
                     isHov ? "scale-105 ring-1 ring-white/[0.18]" : ""
-                  }`}
-                  onMouseEnter={() => {
-                    if (val > 0) setHovered({ row: row.ageGroup, col: k });
-                  }}
+                  } ${val > 0 ? "cursor-pointer" : ""}`}
+                  onMouseEnter={() => { if (val > 0) setHovered({ row: row.ageGroup, col: k }); }}
                   onMouseLeave={() => setHovered(null)}
+                  onClick={() => {
+                    if (val === 0) return;
+                    let href = `/directory/alumni?ageGroup=${encodeURIComponent(row.ageGroup)}`;
+                    if (seniorityCanonical) href += `&seniority=${encodeURIComponent(seniorityCanonical)}`;
+                    router.push(href);
+                  }}
+                  role={val > 0 ? "button" : undefined}
+                  tabIndex={val > 0 ? 0 : undefined}
+                  onKeyDown={val > 0 ? (e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      let href = `/directory/alumni?ageGroup=${encodeURIComponent(row.ageGroup)}`;
+                      if (seniorityCanonical) href += `&seniority=${encodeURIComponent(seniorityCanonical)}`;
+                      router.push(href);
+                    }
+                  } : undefined}
                 >
                   {val > 0 && (
                     <span
                       className={`text-[11px] font-bold leading-none transition-colors duration-150 ${
-                        isHov ? "text-white" : ratio > 0.4 ? "text-white/82" : "text-white/48"
+                        isHov ? "text-white" : ratio > 0.4 ? "text-white" : "text-[#A6A6A6]"
                       }`}
                     >
                       {val}
@@ -110,20 +141,20 @@ export default function AgeSeniorityMatrix({ data }: { data: AgeBySeniorityRow[]
       <div
         className={`mt-5 rounded-[16px] border px-4 py-3 transition-all duration-200 ${
           hovered && hoveredVal
-            ? "border-white/[0.08] bg-white/[0.04] opacity-100"
+            ? "border-[#404040] bg-[#1C1C1C] opacity-100"
             : "border-transparent opacity-0"
         }`}
       >
         <div className="flex items-center gap-3">
           <div className="flex items-baseline gap-1.5">
-            <span className="text-[1.25rem] font-bold text-[#C21A27]">{hoveredVal ?? "–"}</span>
-            <span className="text-[11px] text-white/35">alumni</span>
+            <span className="text-[1.25rem] font-bold text-[#A60F1A]">{hoveredVal ?? "–"}</span>
+            <span className="text-[11px] text-[#737373]">alumni</span>
           </div>
-          <div className="h-4 w-px bg-white/[0.08]" />
-          <div className="text-[11px] text-white/50">
-            <span className="font-semibold text-white/75">{hovered?.row}</span>
-            <span className="mx-1.5 text-white/22">·</span>
-            <span className="font-semibold text-white/75">{hovered?.col}</span>
+          <div className="h-4 w-px bg-[#404040]" />
+          <div className="text-[11px] text-[#A6A6A6]">
+            <span className="font-semibold text-[#E6E6E6]">{hovered?.row}</span>
+            <span className="mx-1.5 text-[#737373]">·</span>
+            <span className="font-semibold text-[#E6E6E6]">{hovered?.col}</span>
             {" "}level
           </div>
         </div>

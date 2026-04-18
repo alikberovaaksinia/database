@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type GroupRow = { label: string; count: number };
 
@@ -22,6 +23,7 @@ function catmullRomPath(pts: { x: number; y: number }[]): string {
 }
 
 export default function AgeWaveChart({ data }: { data: GroupRow[] }) {
+  const router = useRouter();
   const svgRef = useRef<SVGSVGElement>(null);
   const [hovered, setHovered] = useState<number | null>(null);
   const [tipPos, setTipPos] = useState<{ x: number; y: number } | null>(null);
@@ -29,10 +31,11 @@ export default function AgeWaveChart({ data }: { data: GroupRow[] }) {
   if (!data.length) return null;
 
   const VW = 600;
-  const VH = 140;
+  const VH = 168;
   const PX = 20;
   const PT = 24;
-  const waveH = VH - PT - 4;
+  const PB = 28;
+  const waveH = VH - PT - PB;
 
   const maxCount = Math.max(...data.map((d) => d.count));
   const total = data.reduce((s, d) => s + d.count, 0);
@@ -62,9 +65,9 @@ export default function AgeWaveChart({ data }: { data: GroupRow[] }) {
       <svg ref={svgRef} viewBox={`0 0 ${VW} ${VH}`} className="w-full overflow-visible">
         <defs>
           <linearGradient id="awFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%"   stopColor="#C21A27" stopOpacity="0.50" />
-            <stop offset="75%"  stopColor="#C21A27" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="#C21A27" stopOpacity="0" />
+            <stop offset="0%"   stopColor="#A60F1A" stopOpacity="0.50" />
+            <stop offset="75%"  stopColor="#A60F1A" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="#A60F1A" stopOpacity="0" />
           </linearGradient>
           <filter id="awDotGlow" x="-200%" y="-200%" width="500%" height="500%">
             <feGaussianBlur stdDeviation="4" result="blur" />
@@ -88,7 +91,7 @@ export default function AgeWaveChart({ data }: { data: GroupRow[] }) {
         <path
           d={linePath}
           fill="none"
-          stroke={hovered !== null ? "rgba(194,26,39,0.90)" : "rgba(194,26,39,0.60)"}
+          stroke={hovered !== null ? "rgba(166,15,26,0.90)" : "rgba(166,15,26,0.60)"}
           strokeWidth="1.5"
           style={{ transition: "stroke 0.2s" }}
         />
@@ -109,7 +112,7 @@ export default function AgeWaveChart({ data }: { data: GroupRow[] }) {
             cx={pt.x}
             cy={pt.y}
             r={hovered === i ? 5 : 3}
-            fill={hovered === i ? "#C21A27" : "rgba(194,26,39,0.50)"}
+            fill={hovered === i ? "#A60F1A" : "rgba(166,15,26,0.50)"}
             filter={hovered === i ? "url(#awDotGlow)" : undefined}
             style={{ transition: "r 0.15s, fill 0.15s" }}
           />
@@ -144,6 +147,7 @@ export default function AgeWaveChart({ data }: { data: GroupRow[] }) {
               className="cursor-pointer"
               onMouseEnter={() => handleEnter(i)}
               onMouseLeave={() => { setHovered(null); setTipPos(null); }}
+              onClick={() => router.push(`/directory/alumni?ageGroup=${encodeURIComponent(pts[i].label)}`)}
             />
           );
         })}
@@ -152,19 +156,19 @@ export default function AgeWaveChart({ data }: { data: GroupRow[] }) {
       {/* Tooltip */}
       {hovered !== null && tipPos && (
         <div
-          className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full rounded-[14px] border border-white/[0.10] bg-black/80 px-3.5 py-2.5 shadow-[0_8px_28px_rgba(0,0,0,0.6)] backdrop-blur-xl"
+          className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full rounded-[14px] border border-[#404040] bg-[#1A1A1A] px-3.5 py-2.5 shadow-[0_8px_28px_rgba(0,0,0,0.6)]"
           style={{ left: tipPos.x, top: tipPos.y - 12 }}
         >
-          <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/45">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#A6A6A6]">
             {pts[hovered].label}
           </div>
           <div className="mt-1 flex items-baseline gap-1.5">
-            <span className="text-[1.2rem] font-bold leading-none text-[#C21A27]">
+            <span className="text-[1.2rem] font-bold leading-none text-[#A60F1A]">
               {pts[hovered].count}
             </span>
-            <span className="text-[10px] text-white/35">{pts[hovered].pct}%</span>
+            <span className="text-[10px] text-[#737373]">{pts[hovered].pct}%</span>
           </div>
-          <div className="mt-0.5 text-[10px] text-white/22">alumni</div>
+          <div className="mt-0.5 text-[10px] text-[#737373]">alumni</div>
         </div>
       )}
     </div>

@@ -36,17 +36,17 @@ export default function ProfilePage({ person, backHref }: Props) {
   ].filter(Boolean) as string[];
 
   return (
-    <div className="min-h-screen bg-[#FCFAFA] text-[#1D1D1B]">
+    <div className="min-h-screen bg-[#E6E6E6] text-[#1A1A1A]">
       <div className="mx-auto max-w-7xl px-6 py-8">
         <a
           href={backHref}
-          className="group mb-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#1D1D1B] shadow-[0_10px_24px_rgba(0,0,0,0.06)] ring-1 ring-[#E8DCDD] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C21A27] hover:text-white"
+          className="group mb-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#1A1A1A] shadow-[0_10px_24px_rgba(0,0,0,0.06)] ring-1 ring-[#D9D9D9] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A60F1A] hover:text-white"
         >
           <span className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
           Back to alumni list
         </a>
 
-        <div className="overflow-hidden rounded-[36px] bg-[#C21A27] text-white shadow-[0_24px_60px_rgba(194,26,39,0.22)]">
+        <div className="overflow-hidden rounded-[36px] bg-[#A60F1A] text-white shadow-[0_24px_60px_rgba(166,15,26,0.22)]">
           <div className="relative px-8 py-10 md:px-12 md:py-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.12),transparent_30%)]" />
             <div className="relative flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
@@ -122,10 +122,9 @@ export default function ProfilePage({ person, backHref }: Props) {
                     href={person.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-[#C21A27] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#790E17]"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#A60F1A] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#5A0008]"
                   >
                     Open LinkedIn
-                    <span>→</span>
                   </a>
                 )}
               </div>
@@ -145,8 +144,8 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-[32px] border border-[#E8DCDD] bg-white p-7 shadow-[0_16px_36px_rgba(0,0,0,0.04)]">
-      <h2 className="mb-6 text-2xl font-semibold tracking-tight text-[#1D1D1B]">
+    <section className="rounded-[32px] border border-[#D9D9D9] bg-white p-7 shadow-[0_16px_36px_rgba(0,0,0,0.04)]">
+      <h2 className="mb-6 text-2xl font-semibold tracking-tight text-[#1A1A1A]">
         {title}
       </h2>
       {children}
@@ -164,10 +163,10 @@ function InfoGrid({
       {items.map((item) => (
         <div
           key={item.label}
-          className="rounded-[24px] bg-[#FCFAFA] p-5 ring-1 ring-[#F0E7E8]"
+          className="rounded-[24px] bg-[#E6E6E6] p-5 ring-1 ring-[#F4C7C9]"
         >
-          <div className="text-sm font-medium text-[#7A7474]">{item.label}</div>
-          <div className="mt-2 text-[1.15rem] font-semibold text-[#1D1D1B]">
+          <div className="text-sm font-medium text-[#737373]">{item.label}</div>
+          <div className="mt-2 text-[1.15rem] font-semibold text-[#1A1A1A]">
             {item.value}
           </div>
         </div>
@@ -184,9 +183,9 @@ function InfoRow({
   value: string;
 }) {
   return (
-    <div className="rounded-[24px] bg-[#FCFAFA] p-5 ring-1 ring-[#F0E7E8]">
-      <div className="text-sm font-medium text-[#7A7474]">{label}</div>
-      <div className="mt-2 text-[1.15rem] font-semibold text-[#1D1D1B]">
+    <div className="rounded-[24px] bg-[#E6E6E6] p-5 ring-1 ring-[#F4C7C9]">
+      <div className="text-sm font-medium text-[#737373]">{label}</div>
+      <div className="mt-2 text-[1.15rem] font-semibold text-[#1A1A1A]">
         {value}
       </div>
     </div>

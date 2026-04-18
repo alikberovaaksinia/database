@@ -11,6 +11,7 @@ import JemeOrgChart from "../components/JemeOrgChart";
 import AgeWaveChart from "../components/AgeWaveChart";
 import AgeSeniorityMatrix from "../components/AgeSeniorityMatrix";
 import { AGE_BUCKETS } from "../lib/age-group";
+import { normalizeIndustry, statsIndustryToFilterCanonicals } from "../lib/industry";
 
 export const dynamic = "force-dynamic";
 
@@ -196,7 +197,8 @@ export default async function StatsPage() {
     count: row.count,
   }));
 
-  const topThreeCountries = countryData.slice(0, 3);
+  const topThreeCountries = countryMapData.slice(0, 3); // CountryMapRow — includes code for links
+  const topCountryCode = countryMapData[0]?.code ?? "";
 
   const industryTotals = new Map<string, number>();
   for (const row of industriesRaw) {
@@ -262,121 +264,114 @@ export default async function StatsPage() {
   const topCompany = companyData[0]?.label || "-";
   const topRole = roleData[0]?.label || "-";
 
+  // ── Pre-computed directory navigation URLs ───────────────────────────────
+  const topCompanyHref = topCompany !== "-"
+    ? `/directory/alumni?company=${encodeURIComponent(topCompany)}`
+    : "/directory/alumni";
+  const topRoleHref = topRole !== "-"
+    ? `/directory/alumni?q=${encodeURIComponent(topRole)}`
+    : "/directory/alumni";
+  const topIndustryHref = (() => {
+    if (topIndustry === "-") return "/directory/alumni";
+    const cs = statsIndustryToFilterCanonicals(topIndustry);
+    return `/directory/alumni?${cs.map(c => `industry=${encodeURIComponent(c)}`).join("&")}`;
+  })();
+  const boardYesHref = `/directory/alumni?${["true","True","yes","Yes","TRUE","YES"].map(v => `board=${encodeURIComponent(v)}`).join("&")}`;
+  const boardNoHref  = `/directory/alumni?${["false","False","no","No","FALSE","NO"].map(v => `board=${encodeURIComponent(v)}`).join("&")}`;
+  const headYesHref  = `/directory/alumni?${["true","True","yes","Yes","TRUE","YES"].map(v => `head=${encodeURIComponent(v)}`).join("&")}`;
+  const headNoHref   = `/directory/alumni?${["false","False","no","No","FALSE","NO"].map(v => `head=${encodeURIComponent(v)}`).join("&")}`;
+
   return (
-    <div className="min-h-screen overflow-hidden bg-[#08090B] text-[#1D1D1B]">
-      {/* Background glows */}
-      <div className="pointer-events-none fixed inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,rgba(194,26,39,0.28),transparent_24%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_86%_10%,rgba(194,26,39,0.18),transparent_20%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_85%,rgba(255,255,255,0.05),transparent_18%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_76%,rgba(194,26,39,0.14),transparent_24%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.22))]" />
-      </div>
+    <div className="min-h-screen overflow-hidden bg-[#1A1A1A] text-white">
+      {/* Single very subtle vignette — no heavy glows */}
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_120%_60%_at_50%_0%,rgba(166,15,26,0.06),transparent)]" />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-10 pb-24">
+      <div className="relative mx-auto max-w-7xl px-6 py-8 pb-24">
         {/* Back button */}
-        <Link
-          href="/directory"
-          className="group mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/92 px-5 py-2.5 text-sm font-semibold text-[#1D1D1B] shadow-[0_12px_28px_rgba(0,0,0,0.18)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#C21A27] hover:text-white"
-        >
-          <span className="transition-transform duration-300 group-hover:-translate-x-1">
-            ←
-          </span>
-          Back to home
-        </Link>
+        <div className="mb-8">
+          <Link
+            href="/directory"
+            className="rounded-full border border-[#5C5A56] bg-[#1C1C1C] px-4 py-2 text-sm font-medium text-[#B3B0AA] transition hover:border-[#A6A6A6] hover:text-white"
+          >
+            Back to home
+          </Link>
+        </div>
 
-        {/* Hero */}
+        {/* Header */}
         <AnimatedSection>
-          <div className="overflow-hidden rounded-[42px] border border-white/10 bg-[linear-gradient(135deg,#A9101D_0%,#C21A27_52%,#760E16_100%)] text-white shadow-[0_30px_90px_rgba(0,0,0,0.36)]">
-            <div className="relative px-8 py-10 md:px-12 md:py-14">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.16),transparent_28%)]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.08),transparent_24%)]" />
-
-              <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-                <div className="max-w-3xl">
-                  <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-white/80 backdrop-blur-sm">
-                    <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
-                    Statistics & Insights
-                  </div>
-
-                  <InteractiveHeroTitle
-                    className="text-5xl font-semibold leading-none tracking-tight md:text-6xl"
-                    variant="light"
-                  >
-                    Alumni Analytics
-                  </InteractiveHeroTitle>
-
-                  <p className="mt-4 max-w-xl text-lg leading-8 text-white/80">
-                    Explore the alumni network through geography, careers,
-                    companies, and JEME leadership data.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 lg:max-w-[36%] lg:justify-end">
-                  <HeroPill value={String(totalAlumni)} label="alumni" />
-                  <HeroPill value={String(totalCountries)} label="countries" />
-                  <HeroPill value={String(totalIndustries)} label="industries" />
-                  <HeroPill value={String(totalCompanies)} label="companies" />
-                </div>
-              </div>
-            </div>
+          <div className="mb-10">
+            <InteractiveHeroTitle
+              className="text-5xl font-semibold tracking-tight leading-[0.95] md:text-6xl xl:text-[6rem]"
+              variant="light"
+            >
+              Alumni Analytics
+            </InteractiveHeroTitle>
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-[#A6A6A6]">
+              Explore the alumni network through geography, careers,
+              companies, and JEME leadership data.
+            </p>
           </div>
         </AnimatedSection>
 
-        {/* Stat tiles — dashboard layout */}
+        {/* Stat tiles */}
         <AnimatedSection delay={0.05}>
-          <div className="relative mt-8">
-            {/* Ambient glow blobs */}
-            <div className="pointer-events-none absolute -left-20 top-1/4 h-72 w-72 rounded-full bg-[#C21A27]/[0.07] blur-3xl" />
-            <div className="pointer-events-none absolute -right-16 bottom-1/4 h-60 w-60 rounded-full bg-[#C21A27]/[0.05] blur-3xl" />
+          <div className="mt-2 flex flex-col gap-4 md:gap-5">
 
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
-
-              {/* ── Row 1: hero left, two secondaries right ── */}
-              <div className="col-span-2">
+            {/* ── Row 1: hero left (~41%), two secondaries right (~29% each) ── */}
+            <div className="grid grid-cols-1 gap-4 md:gap-5 md:[grid-template-columns:1.4fr_1fr_1fr]">
+              <Link href="/directory/alumni" className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
                 <StatTile label="Total Alumni" value={String(totalAlumni)} accent size="hero" />
-              </div>
-              <div>
+              </Link>
+              <Link href="/directory/alumni" className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
                 <StatTile label="Countries Represented" value={String(totalCountries)} accent />
-              </div>
-              <div>
+              </Link>
+              <Link href="/directory/alumni" className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
                 <StatTile label="Industries Represented" value={String(totalIndustries)} accent />
-              </div>
-
-              {/* ── Row 2: two primaries left, wide text tile right ── */}
-              <div>
-                <StatTile label="Companies Represented" value={String(totalCompanies)} accent />
-              </div>
-              <div>
-                <StatTile label="Board Members" value={String(boardYesCount)} accent />
-              </div>
-              <div className="col-span-2">
-                <StatTile label="Top Country" value={topCountry} />
-              </div>
-
-              {/* ── Row 3: four compact tiles ── */}
-              <div>
-                <StatTile label="Department Heads" value={String(headYesCount)} accent size="compact" />
-              </div>
-              <div>
-                <StatTile label="Top Company" value={topCompany} size="compact" />
-              </div>
-              <div>
-                <StatTile label="Top Industry" value={topIndustry} size="compact" />
-              </div>
-              <div>
-                <StatTile label="Top Role" value={topRole} size="compact" />
-              </div>
-
-              {/* ── Row 4: two equal-width tiles ── */}
-              <div className="col-span-2">
-                <StatTile label="JEME Roles Tracked" value={String(jemeRoleData.length)} accent />
-              </div>
-              <div className="col-span-2">
-                <StatTile label="Role Categories" value={String(totalRoles)} accent />
-              </div>
-
+              </Link>
             </div>
+
+            {/* ── Row 2: two secondaries left (~29% each), wide tile right (~41%) ── */}
+            <div className="grid grid-cols-1 gap-4 md:gap-5 md:[grid-template-columns:1fr_1fr_1.4fr]">
+              <Link href="/directory/alumni" className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
+                <StatTile label="Companies Represented" value={String(totalCompanies)} accent />
+              </Link>
+              <Link href={boardYesHref} className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
+                <StatTile label="Board Members" value={String(boardYesCount)} accent />
+              </Link>
+              <Link
+                href={topCountryCode ? `/directory/alumni?country=${encodeURIComponent(topCountryCode)}` : "/directory/alumni"}
+                className="block h-full cursor-pointer"
+              >
+                <StatTile label="Top Country" value={topCountry} />
+              </Link>
+            </div>
+
+            {/* ── Row 3: four equal compact tiles ── */}
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
+              <Link href={headYesHref} className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
+                <StatTile label="Department Heads" value={String(headYesCount)} accent size="compact" />
+              </Link>
+              <Link href={topCompanyHref} className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
+                <StatTile label="Top Company" value={topCompany} size="compact" />
+              </Link>
+              <Link href={topIndustryHref} className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
+                <StatTile label="Top Industry" value={topIndustry} size="compact" />
+              </Link>
+              <Link href={topRoleHref} className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
+                <StatTile label="Top Role" value={topRole} size="compact" />
+              </Link>
+            </div>
+
+            {/* ── Row 4: two equal tiles ── */}
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
+              <Link href="/directory/alumni" className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
+                <StatTile label="JEME Roles Tracked" value={String(jemeRoleData.length)} accent />
+              </Link>
+              <Link href="/directory/alumni" className="block h-full cursor-pointer rounded-[22px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">
+                <StatTile label="Role Categories" value={String(totalRoles)} accent />
+              </Link>
+            </div>
+
           </div>
         </AnimatedSection>
 
@@ -386,28 +381,12 @@ export default async function StatsPage() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.15}>
-          <div className="-mx-6 xl:-mx-[calc((100vw-80rem)/2+1.5rem)]">
+          <div>
             {/* Dark centerpiece card */}
-            <div className="mt-6 relative overflow-hidden rounded-[42px] border border-white/12 shadow-[0_50px_120px_rgba(0,0,0,0.75),inset_0_1px_0_rgba(255,255,255,0.07)]">
+            <div className="mt-6 relative overflow-hidden rounded-[42px] border border-[#404040] bg-[#1C1C1C] shadow-[0_30px_80px_rgba(0,0,0,0.60)]">
 
-              {/* Base dark gradient */}
-              <div className="absolute inset-0 bg-[linear-gradient(150deg,#160E0F_0%,#0C0A0D_50%,#12080E_100%)]" />
-
-              {/* Dot-grid texture */}
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)",
-                  backgroundSize: "28px 28px",
-                  opacity: 0.4,
-                }}
-              />
-
-              {/* Red glow — top-right hero */}
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_85%_-10%,rgba(194,26,39,0.30),transparent)]" />
-              {/* Red glow — bottom-left ambient */}
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_8%_95%,rgba(194,26,39,0.13),transparent)]" />
+              {/* Single red accent glow — top-right */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_90%_0%,rgba(166,15,26,0.25),transparent)]" />
 
               {/* ── Header ── */}
               <div className="relative px-8 pt-8 md:px-10 md:pt-10">
@@ -416,19 +395,11 @@ export default async function StatsPage() {
                     <h2 className="text-3xl font-semibold text-white md:text-4xl">
                       Global Alumni Footprint
                     </h2>
-                    <p className="mt-2 text-sm leading-relaxed text-white/38">
+                    <p className="mt-2 text-sm leading-relaxed text-[#A6A6A6]">
                       Where alumni are currently working, across {totalCountries} countries.
                     </p>
                   </div>
 
-                  {/* Mini-stat row */}
-                  <div className="hidden shrink-0 items-center gap-5 sm:flex">
-                    <MapMiniStat value={String(totalAlumni)} label="Alumni" />
-                    <div className="h-7 w-px bg-white/12" />
-                    <MapMiniStat value={String(totalCountries)} label="Countries" />
-                    <div className="h-7 w-px bg-white/12" />
-                    <MapMiniStat value={topCountry} label="Top Hub" />
-                  </div>
                 </div>
               </div>
 
@@ -436,7 +407,7 @@ export default async function StatsPage() {
               <div className="relative mt-2 flex flex-col lg:grid lg:grid-cols-[2fr_1fr] lg:items-start">
 
                 {/* Left: Map */}
-                <div className="min-w-0 lg:border-r lg:border-white/8">
+                <div className="min-w-0 lg:border-r lg:border-[#404040]">
                   <WorldMapChart
                     data={countryMapData.map((item) => ({
                       country: item.code,
@@ -446,8 +417,8 @@ export default async function StatsPage() {
                 </div>
 
                 {/* Right: Top countries */}
-                <div className="border-t border-white/8 px-8 py-6 lg:border-t-0 lg:px-8 lg:py-8">
-                  <div className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-white/28">
+                <div className="border-t border-[#404040] px-8 py-6 lg:border-t-0 lg:px-8 lg:py-8">
+                  <div className="mb-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#737373]">
                     Top countries
                   </div>
                   <div className="flex flex-col gap-3">
@@ -456,6 +427,7 @@ export default async function StatsPage() {
                         key={country.label}
                         rank={index + 1}
                         country={country.label}
+                        code={country.code}
                         count={country.count}
                         total={totalAlumni}
                         maxCount={topThreeCountries[0]?.count ?? 1}
@@ -507,17 +479,18 @@ export default async function StatsPage() {
               subtitle="Companies where the highest number of alumni have previously worked."
               topBadge="Top Past Employer"
               employerLabel="Past employer"
+              filterParam="pastFirm"
             />
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={0.27}>
           <div className="mt-6">
-            <section className="relative overflow-hidden rounded-[34px] border border-white/[0.08] bg-white/[0.04] p-7 backdrop-blur-xl shadow-[0_22px_54px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.05)]">
-              <div className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-[#C21A27]/[0.08] blur-3xl" />
+            <section className="relative overflow-hidden rounded-[34px] border border-[#404040] bg-[#1C1C1C] p-7 shadow-[0_22px_54px_rgba(0,0,0,0.55)]">
+              <div className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-[#A60F1A]/[0.08] blur-3xl" />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.10] to-transparent" />
-              <h2 className="relative text-2xl font-semibold tracking-tight text-white/90">JEME Role Distribution</h2>
-              <p className="relative mt-2 text-sm leading-7 text-white/38">How alumni were distributed across JEME organizational roles.</p>
+              <h2 className="relative text-2xl font-semibold tracking-tight text-[#E6E6E6]">JEME Role Distribution</h2>
+              <p className="relative mt-2 text-sm leading-7 text-[#A6A6A6]">How alumni were distributed across JEME organizational roles.</p>
               <div className="relative mt-6">
                 <JemeOrgChart data={jemeRoleData.slice(0, 12)} total={totalAlumni} />
               </div>
@@ -532,35 +505,37 @@ export default async function StatsPage() {
 
         <AnimatedSection delay={0.3}>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <section className="relative overflow-hidden rounded-[34px] border border-white/[0.08] bg-white/[0.04] p-7 backdrop-blur-xl shadow-[0_22px_54px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.05)]">
-              <div className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 rounded-full bg-[#C21A27]/[0.08] blur-3xl" />
+            <section className="relative overflow-hidden rounded-[34px] border border-[#404040] bg-[#1C1C1C] p-7 shadow-[0_22px_54px_rgba(0,0,0,0.55)]">
+              <div className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 rounded-full bg-[#A60F1A]/[0.08] blur-3xl" />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.10] to-transparent" />
               <div className="relative flex flex-col gap-6">
                 <div>
-                  <h2 className="text-lg font-semibold tracking-tight text-white/90">Board vs Non-board</h2>
-                  <p className="mt-1 text-xs leading-6 text-white/38">Board membership across all alumni.</p>
+                  <h2 className="text-lg font-semibold tracking-tight text-[#E6E6E6]">Board vs Non-board</h2>
+                  <p className="mt-1 text-xs leading-6 text-[#A6A6A6]">Board membership across all alumni.</p>
                 </div>
                 <BubbleComparison
                   positiveLabel="Board"
                   positiveValue={boardYesCount}
                   negativeLabel="Non-board"
                   negativeValue={boardNoCount}
+                  positiveHref={boardYesHref}
+                  negativeHref={boardNoHref}
                 />
-                <div className="border-t border-white/[0.06] pt-5">
+                <div className="border-t border-[#404040] pt-5">
                   <div className="flex items-end justify-between">
                     <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">Board</div>
-                      <div className="mt-1 text-[2rem] font-bold leading-none text-[#C21A27]">{boardYesCount}</div>
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#737373]">Board</div>
+                      <div className="mt-1 text-[2rem] font-bold leading-none text-[#A60F1A]">{boardYesCount}</div>
                     </div>
-                    <div className="mb-1 text-[10px] font-medium text-white/20">out of {boardYesCount + boardNoCount}</div>
+                    <div className="mb-1 text-[10px] font-medium text-[#737373]">out of {boardYesCount + boardNoCount}</div>
                     <div className="text-right">
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">Non-board</div>
-                      <div className="mt-1 text-[2rem] font-bold leading-none text-white/45">{boardNoCount}</div>
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#737373]">Non-board</div>
+                      <div className="mt-1 text-[2rem] font-bold leading-none text-[#A6A6A6]">{boardNoCount}</div>
                     </div>
                   </div>
-                  <div className="mt-4 h-[3px] overflow-hidden rounded-full bg-white/[0.07]">
+                  <div className="mt-4 h-[3px] overflow-hidden rounded-full bg-[#404040]">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-[#8F1320] to-[#C21A27]"
+                      className="h-full rounded-full bg-gradient-to-r from-[#7A0C14] to-[#A60F1A]"
                       style={{ width: `${Math.round((boardYesCount / (boardYesCount + boardNoCount || 1)) * 100)}%` }}
                     />
                   </div>
@@ -568,35 +543,37 @@ export default async function StatsPage() {
               </div>
             </section>
 
-            <section className="relative overflow-hidden rounded-[34px] border border-white/[0.08] bg-white/[0.04] p-7 backdrop-blur-xl shadow-[0_22px_54px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.05)]">
-              <div className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 rounded-full bg-[#C21A27]/[0.08] blur-3xl" />
+            <section className="relative overflow-hidden rounded-[34px] border border-[#404040] bg-[#1C1C1C] p-7 shadow-[0_22px_54px_rgba(0,0,0,0.55)]">
+              <div className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 rounded-full bg-[#A60F1A]/[0.08] blur-3xl" />
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.10] to-transparent" />
               <div className="relative flex flex-col gap-6">
                 <div>
-                  <h2 className="text-lg font-semibold tracking-tight text-white/90">Head vs Non-head</h2>
-                  <p className="mt-1 text-xs leading-6 text-white/38">Department leadership across all alumni.</p>
+                  <h2 className="text-lg font-semibold tracking-tight text-[#E6E6E6]">Head vs Non-head</h2>
+                  <p className="mt-1 text-xs leading-6 text-[#A6A6A6]">Department leadership across all alumni.</p>
                 </div>
                 <BubbleComparison
                   positiveLabel="Head"
                   positiveValue={headYesCount}
                   negativeLabel="Non-head"
                   negativeValue={headNoCount}
+                  positiveHref={headYesHref}
+                  negativeHref={headNoHref}
                 />
-                <div className="border-t border-white/[0.06] pt-5">
+                <div className="border-t border-[#404040] pt-5">
                   <div className="flex items-end justify-between">
                     <div>
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">Head</div>
-                      <div className="mt-1 text-[2rem] font-bold leading-none text-[#C21A27]">{headYesCount}</div>
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#737373]">Head</div>
+                      <div className="mt-1 text-[2rem] font-bold leading-none text-[#A60F1A]">{headYesCount}</div>
                     </div>
-                    <div className="mb-1 text-[10px] font-medium text-white/20">out of {headYesCount + headNoCount}</div>
+                    <div className="mb-1 text-[10px] font-medium text-[#737373]">out of {headYesCount + headNoCount}</div>
                     <div className="text-right">
-                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">Non-head</div>
-                      <div className="mt-1 text-[2rem] font-bold leading-none text-white/45">{headNoCount}</div>
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#737373]">Non-head</div>
+                      <div className="mt-1 text-[2rem] font-bold leading-none text-[#A6A6A6]">{headNoCount}</div>
                     </div>
                   </div>
-                  <div className="mt-4 h-[3px] overflow-hidden rounded-full bg-white/[0.07]">
+                  <div className="mt-4 h-[3px] overflow-hidden rounded-full bg-[#404040]">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-[#8F1320] to-[#C21A27]"
+                      className="h-full rounded-full bg-gradient-to-r from-[#7A0C14] to-[#A60F1A]"
                       style={{ width: `${Math.round((headYesCount / (headYesCount + headNoCount || 1)) * 100)}%` }}
                     />
                   </div>
@@ -630,209 +607,6 @@ export default async function StatsPage() {
       </div>
     </div>
   );
-}
-
-// ─── Industry normalisation ─────────────────────────────────────────────────
-
-const INDUSTRY_NORM: Record<string, string | null> = {
-  // Consulting
-  "consulting":                            "Consulting",
-  "consulting & professional services":    "Consulting",
-  "business consulting & services":        "Consulting",
-  "it consulting":                         "Consulting",
-  "technology consulting":                 "Consulting",
-  "business & professional services":      "Consulting",
-  "software & consulting":                 "Consulting",
-  "advisory":                              "Consulting",
-
-  // Banking
-  "banking":                               "Banking",
-  "digital banking":                       "Banking",
-
-  // Financial Services
-  "financial services":                    "Financial Services",
-  "finance":                               "Financial Services",
-  "finance & education":                   "Financial Services",
-  "information services":                  "Financial Services",
-
-  // Investment Banking
-  "investment banking":                    "Investment Banking",
-
-  // Private Equity
-  "private equity":                        "Private Equity",
-
-  // Asset Management
-  "asset management":                      "Asset Management",
-  "investment & asset management":         "Asset Management",
-  "investments":                           "Asset Management",
-  "alternative investments":               "Asset Management",
-  "corporate finance":                     "Asset Management",
-
-  // Technology & Software
-  "technology":                            "Technology & Software",
-  "technology & software":                 "Technology & Software",
-  "software development":                  "Technology & Software",
-  "software":                              "Technology & Software",
-  "it":                                    "Technology & Software",
-  "it services":                           "Technology & Software",
-  "it services & consulting":              "Technology & Software",
-  "hr software":                           "Technology & Software",
-  "data analysis":                         "Technology & Software",
-  "internet market platform":              "Technology & Software",
-  "digital":                               "Technology & Software",
-  "fintech":                               "Technology & Software",
-  "semiconductor manufacturing":           "Technology & Software",
-  "consumer electronics":                  "Technology & Software",
-  "electronics":                           "Technology & Software",
-
-  // Legal
-  "legal":                                 "Legal",
-  "law":                                   "Legal",
-  "ai for lawyers":                        "Legal",
-
-  // Education & Research
-  "education":                             "Education & Research",
-  "educational resources":                 "Education & Research",
-  "academia":                              "Education & Research",
-  "research":                              "Education & Research",
-  "research services":                     "Education & Research",
-  "research & science":                    "Education & Research",
-  "mentoring":                             "Education & Research",
-
-  // Healthcare & Pharma
-  "healthcare":                            "Healthcare & Pharma",
-  "medical & healthcare":                  "Healthcare & Pharma",
-  "medical":                               "Healthcare & Pharma",
-  "pharmaceutical":                        "Healthcare & Pharma",
-  "pharmaceuticals":                       "Healthcare & Pharma",
-  "pharmaceutical manufacturing":          "Healthcare & Pharma",
-  "wellness":                              "Healthcare & Pharma",
-
-  // Retail & E-Commerce
-  "retail":                                "Retail & E-Commerce",
-  "e-commerce":                            "Retail & E-Commerce",
-  "retail apparel & fashion":              "Retail & E-Commerce",
-  "apparel & fashion":                     "Retail & E-Commerce",
-  "apparel":                               "Retail & E-Commerce",
-  "luxury retail":                         "Retail & E-Commerce",
-  "wholesale":                             "Retail & E-Commerce",
-  "customer service":                      "Retail & E-Commerce",
-
-  // Fashion & Luxury
-  "fashion":                               "Fashion & Luxury",
-  "luxury":                                "Fashion & Luxury",
-  "luxury goods":                          "Fashion & Luxury",
-  "luxury fashion":                        "Fashion & Luxury",
-  "cosmetics":                             "Fashion & Luxury",
-  "beauty & personal care":                "Fashion & Luxury",
-  "jewellery":                             "Fashion & Luxury",
-
-  // Food & Beverage
-  "food & beverage":                       "Food & Beverage",
-  "beverage manufacturing":                "Food & Beverage",
-
-  // Energy & Sustainability
-  "energy":                                "Energy & Sustainability",
-  "sustainability":                        "Energy & Sustainability",
-  "environmental services":                "Energy & Sustainability",
-
-  // Media & Marketing
-  "media":                                 "Media & Marketing",
-  "media & marketing":                     "Media & Marketing",
-  "marketing":                             "Media & Marketing",
-  "marketing & media":                     "Media & Marketing",
-  "online advertising":                    "Media & Marketing",
-  "geomarketing":                          "Media & Marketing",
-  "editing":                               "Media & Marketing",
-
-  // Insurance
-  "insurance":                             "Insurance",
-  "credit & insurance":                    "Insurance",
-  "pet insurance":                         "Insurance",
-  "assurance":                             "Insurance",
-
-  // Public Sector & Policy
-  "public policy":                         "Public Sector & Policy",
-  "public sector":                         "Public Sector & Policy",
-  "politics":                              "Public Sector & Policy",
-  "international relations":               "Public Sector & Policy",
-  "international trade and development":   "Public Sector & Policy",
-  "civil & social":                        "Public Sector & Policy",
-  "non-profit":                            "Public Sector & Policy",
-  "defense":                               "Public Sector & Policy",
-  "volunteering":                          "Public Sector & Policy",
-
-  // Manufacturing & Industrial
-  "manufacturing":                         "Manufacturing & Industrial",
-  "automotive":                            "Manufacturing & Industrial",
-  "chemicals":                             "Manufacturing & Industrial",
-  "chemistry":                             "Manufacturing & Industrial",
-  "packaging":                             "Manufacturing & Industrial",
-  "textile":                               "Manufacturing & Industrial",
-  "textile manufacturing":                 "Manufacturing & Industrial",
-  "molding":                               "Manufacturing & Industrial",
-  "engineering":                           "Manufacturing & Industrial",
-  "packaging and containers manufacturing":"Manufacturing & Industrial",
-
-  // Consumer Goods
-  "consumer goods":                        "Consumer Goods",
-  "consumer services":                     "Consumer Goods",
-
-  // Real Estate & Construction
-  "real estate":                           "Real Estate & Construction",
-  "construction":                          "Real Estate & Construction",
-  "interior design":                       "Real Estate & Construction",
-
-  // Venture Capital
-  "venture capital":                       "Venture Capital",
-
-  // Accounting
-  "accounting":                            "Accounting",
-
-  // Hospitality & Travel
-  "hospitality":                           "Hospitality & Travel",
-  "travel":                                "Hospitality & Travel",
-  "transport":                             "Hospitality & Travel",
-  "aviation":                              "Hospitality & Travel",
-
-  // Logistics
-  "logistics & supply chain":              "Logistics & Supply Chain",
-  "logistics":                             "Logistics & Supply Chain",
-
-  // HR & Recruitment
-  "human resources":                       "HR & Recruitment",
-  "recruitment":                           "HR & Recruitment",
-
-  // Telecoms
-  "telecommunications":                    "Telecommunications",
-
-  // Noise / not an industry — exclude
-  "not working":                           null,
-  "n/a":                                   null,
-  "associate consultant":                  null,
-  "other":                                 null,
-  "startup":                               null,
-  "holding firm":                          null,
-  "social networking":                     null,
-  "data protection":                       null,
-  "sport":                                 null,
-  "art & design":                          null,
-  "entertainment":                         null,
-  "hubs":                                  null,
-  "operations":                            null,
-  "services":                              null,
-  "relations services":                    null,
-  "freelance":                             null,
-  "sales":                                 null,
-  "agriculture":                           null,
-};
-
-function normalizeIndustry(raw: string | null | undefined): string | null {
-  if (!raw) return null;
-  const key = raw.trim().toLowerCase();
-  if (key in INDUSTRY_NORM) return INDUSTRY_NORM[key];
-  // Unknown label — pass through as-is so it stays visible rather than silently dropped
-  return raw.trim();
 }
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
@@ -964,26 +738,18 @@ function buildAgeBySeniorityData(
 
 // ─── UI Components ──────────────────────────────────────────────────────────
 
-function MapMiniStat({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="text-right">
-      <div className="text-xl font-bold leading-none text-white">{value}</div>
-      <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/32">
-        {label}
-      </div>
-    </div>
-  );
-}
 
 function MapTopCountryCard({
   rank,
   country,
+  code,
   count,
   total,
   maxCount,
 }: {
   rank: number;
   country: string;
+  code: string;
   count: number;
   total: number;
   maxCount: number;
@@ -993,34 +759,39 @@ function MapTopCountryCard({
   const medals = ["01", "02", "03"];
 
   return (
-    <div className="rounded-[22px] border border-white/12 bg-white/8 p-5 backdrop-blur-sm transition-colors duration-200 hover:bg-white/11">
+    <Link
+      href={`/directory/alumni?country=${encodeURIComponent(code)}`}
+      className="group block rounded-[22px] border border-[#404040] bg-[#1C1C1C] p-5 transition-all duration-200 hover:border-[#5C5A56] hover:bg-[#404040] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+    >
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#C21A27] to-[#7A0E19] text-[10px] font-bold text-white shadow-[0_4px_12px_rgba(194,26,39,0.4)]">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#A60F1A] to-[#5A0008] text-[10px] font-bold text-white shadow-[0_4px_12px_rgba(166,15,26,0.4)]">
             {medals[rank - 1]}
           </div>
-          <span className="truncate text-sm font-semibold text-white/90">{country}</span>
+          <span className="truncate text-sm font-semibold text-[#E6E6E6] group-hover:text-white transition-colors duration-200">
+            {country}
+          </span>
         </div>
-        <div className="shrink-0 text-right">
-          <span className="text-xl font-bold text-[#E85A66]">{count}</span>
-          <span className="ml-1.5 text-xs text-white/35">{pct}%</span>
+        <div className="flex shrink-0 items-center gap-2 text-right">
+          <span className="text-xl font-bold text-[#D65A61]">{count}</span>
+          <span className="text-xs text-[#737373]">{pct}%</span>
+          <span className="text-[#737373] text-xs transition-transform duration-200 group-hover:translate-x-0.5">→</span>
         </div>
       </div>
       <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/10">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[#8F1320] to-[#E85A66]"
+          className="h-full rounded-full bg-gradient-to-r from-[#7A0C14] to-[#D65A61]"
           style={{ width: barWidth }}
         />
       </div>
-    </div>
+    </Link>
   );
 }
 
-function HeroPill({ value, label }: { value: string; label: string }) {
+function HeroPill({ value }: { value: string; label: string }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full bg-white/12 px-4 py-2 text-sm font-semibold text-white backdrop-blur-sm ring-1 ring-white/10">
-      <span className="text-base font-bold">{value}</span>
-      <span className="text-white/65 font-normal">{label}</span>
+    <div className="inline-flex items-center rounded-full bg-white/12 px-4 py-2 text-base font-bold text-white ring-1 ring-white/10">
+      {value}
     </div>
   );
 }
@@ -1028,10 +799,10 @@ function HeroPill({ value, label }: { value: string; label: string }) {
 function SectionLabel({ children }: { children: string }) {
   return (
     <div className="mt-12 flex items-center gap-4">
-      <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/50 backdrop-blur-sm">
+      <div className="text-xs font-semibold uppercase tracking-[0.28em] text-[#737373]">
         {children}
       </div>
-      <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+      <div className="h-px flex-1 bg-[#1C1C1C]" />
     </div>
   );
 }
@@ -1051,41 +822,31 @@ function StatTile({
 
   return (
     <div
-      className={`group relative h-full overflow-hidden rounded-[22px] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 ${
+      className={`h-full rounded-[22px] border border-[#404040] bg-[#1C1C1C] transition-all duration-300 hover:-translate-y-1 hover:border-[#5C5A56] ${
         size === "hero"
           ? "min-h-[164px] p-7"
           : size === "compact"
             ? "min-h-[92px] p-5"
             : "min-h-[112px] p-5"
-      } ${
-        accent
-          ? "border border-[rgba(194,26,39,0.25)] bg-[rgba(194,26,39,0.06)] shadow-[0_16px_40px_rgba(0,0,0,0.42),0_0_24px_rgba(194,26,39,0.08)] hover:border-[rgba(194,26,39,0.46)] hover:shadow-[0_24px_56px_rgba(0,0,0,0.52),0_0_42px_rgba(194,26,39,0.22)]"
-          : "border border-white/[0.08] bg-white/[0.04] shadow-[0_16px_40px_rgba(0,0,0,0.38)] hover:border-white/[0.15] hover:shadow-[0_24px_56px_rgba(0,0,0,0.46),0_0_32px_rgba(194,26,39,0.12)]"
       }`}
     >
-      {/* Top edge glass sheen */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.12] to-transparent" />
-
-      {/* Hover bottom glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_110%,rgba(194,26,39,0.20),transparent_58%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-      <div className="relative z-10 flex h-full flex-col">
-        <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-white/40">
+      <div className="flex h-full flex-col">
+        <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#737373]">
           {label}
         </div>
         <div
-          className={`mt-auto pt-3 font-bold leading-none tracking-tight transition-colors duration-300 ${
+          className={`mt-auto pt-3 font-bold leading-none tracking-tight text-white ${
             size === "hero"
               ? isNumeric
-                ? "text-[4.5rem] text-white"
-                : "text-[2rem] leading-snug text-white/90 group-hover:text-white"
+                ? "text-[4.5rem]"
+                : "text-[2rem] leading-snug"
               : size === "compact"
                 ? isNumeric
-                  ? "text-3xl text-white"
-                  : "text-sm leading-snug text-white/80 group-hover:text-white"
+                  ? "text-3xl"
+                  : "text-sm leading-snug text-[#E6E6E6]"
                 : isNumeric
-                  ? "text-[2.5rem] text-white"
-                  : "text-xl leading-snug text-white/85 group-hover:text-white"
+                  ? "text-[2.5rem]"
+                  : "text-xl leading-snug text-[#E6E6E6]"
           }`}
         >
           {value}
@@ -1108,7 +869,7 @@ function RoleHeroCards({
   const topCount = data[0]?.count ?? 1;
 
   if (data.length === 0) {
-    return <div className="text-sm text-white/40">No data available.</div>;
+    return <div className="text-sm text-[#737373]">No data available.</div>;
   }
 
   const [rank1, rank2, rank3, ...rest] = data;
@@ -1116,25 +877,25 @@ function RoleHeroCards({
     effectiveTotal > 0 ? ((item.count / effectiveTotal) * 100).toFixed(1) : "0";
 
   return (
-    <section className="relative overflow-hidden rounded-[34px] border border-white/[0.08] bg-white/[0.04] p-7 backdrop-blur-xl shadow-[0_22px_54px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.05)]">
-      <div className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-[#C21A27]/[0.07] blur-3xl" />
+    <section className="relative overflow-hidden rounded-[34px] border border-[#404040] bg-[#1C1C1C] p-7 shadow-[0_22px_54px_rgba(0,0,0,0.55)]">
+      <div className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-[#A60F1A]/[0.18] blur-3xl" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.10] to-transparent" />
 
       {/* Header */}
       <div className="relative flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-semibold tracking-tight text-white/90">
+          <h2 className="text-2xl font-semibold tracking-tight text-[#E6E6E6]">
             Current Role Distribution
           </h2>
-          <p className="mt-2 text-sm leading-7 text-white/38">
+          <p className="mt-2 text-sm leading-7 text-[#A6A6A6]">
             How alumni currently identify professionally.
           </p>
         </div>
-        <div className="shrink-0 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-right">
-          <div className="text-xl font-bold leading-none text-white/80">
+        <div className="shrink-0 rounded-2xl border border-[#404040] bg-[#1C1C1C] px-4 py-3 text-right">
+          <div className="text-xl font-bold leading-none text-[#E6E6E6]">
             {totalDistinct ?? data.length}
           </div>
-          <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">
+          <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#737373]">
             distinct roles
           </div>
         </div>
@@ -1142,28 +903,31 @@ function RoleHeroCards({
 
       {/* ── Tier 1 — #1 hero row ── */}
       {rank1 && (
-        <div className="relative mt-7 overflow-hidden rounded-[22px] border border-[#C21A27]/[0.28] bg-[#C21A27]/[0.10] px-6 py-5 shadow-[0_0_36px_rgba(194,26,39,0.14)] transition-colors duration-200 hover:bg-[#C21A27]/[0.15]">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#C21A27]/[0.55] to-transparent" />
+        <Link
+          href={`/directory/alumni?q=${encodeURIComponent(rank1.label)}`}
+          className="relative mt-7 block overflow-hidden rounded-[22px] border border-[#A60F1A]/[0.28] bg-[#A60F1A]/[0.10] px-6 py-5 shadow-[0_0_36px_rgba(166,15,26,0.14)] transition-colors duration-200 hover:bg-[#A60F1A]/[0.15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A60F1A]/50"
+        >
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#A60F1A]/[0.55] to-transparent" />
           <div className="flex items-center gap-5">
-            <span className="shrink-0 select-none text-[3.5rem] font-black leading-none tracking-tighter text-[#E85A66]/[0.55]">
+            <span className="shrink-0 select-none text-[3.5rem] font-black leading-none tracking-tighter text-[#D65A61]/[0.55]">
               01
             </span>
             <div className="min-w-0 flex-1">
               <div className="text-xl font-semibold text-white">{rank1.label}</div>
-              <div className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-white/30">
+              <div className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-[#737373]">
                 Most common role
               </div>
             </div>
             <div className="shrink-0 text-right">
-              <div className="text-[3rem] font-bold leading-none text-[#E85A66]">
+              <div className="text-[3rem] font-bold leading-none text-[#D65A61]">
                 {rank1.count}
               </div>
-              <div className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">
+              <div className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#737373]">
                 {pct(rank1)}% of alumni
               </div>
             </div>
           </div>
-        </div>
+        </Link>
       )}
 
       {/* ── Tier 2 — #2 and #3 side by side ── */}
@@ -1172,32 +936,33 @@ function RoleHeroCards({
           if (!item) return null;
           const rank = idx + 2;
           return (
-            <div
+            <Link
               key={item.label}
-              className="group relative overflow-hidden rounded-[18px] border border-white/[0.08] bg-white/[0.035] px-5 py-4 transition-colors duration-150 hover:border-white/[0.14] hover:bg-white/[0.06]"
+              href={`/directory/alumni?q=${encodeURIComponent(item.label)}`}
+              className="group relative block overflow-hidden rounded-[18px] border border-[#404040] bg-[#1A1A1A] px-5 py-4 transition-colors duration-150 hover:border-[#5C5A56] hover:bg-[#1C1C1C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.10] to-transparent" />
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <span className="text-[11px] font-bold tracking-[0.14em] text-[#E85A66]/[0.45]">
+                  <span className="text-[11px] font-bold tracking-[0.14em] text-[#D65A61]/[0.45]">
                     0{rank}
                   </span>
-                  <div className="mt-1.5 truncate text-base font-semibold text-white/75 transition-colors group-hover:text-white/95">
+                  <div className="mt-1.5 truncate text-base font-semibold text-[#E6E6E6] transition-colors group-hover:text-white">
                     {item.label}
                   </div>
                 </div>
                 <div className="shrink-0 text-right">
-                  <div className="text-2xl font-bold text-[#D04A56]">{item.count}</div>
-                  <div className="mt-0.5 text-[10px] text-white/28">{pct(item)}%</div>
+                  <div className="text-2xl font-bold text-[#D65A61]">{item.count}</div>
+                  <div className="mt-0.5 text-[10px] text-[#737373]">{pct(item)}%</div>
                 </div>
               </div>
-              <div className="mt-4 h-[2px] overflow-hidden rounded-full bg-white/[0.06]">
+              <div className="mt-4 h-[2px] overflow-hidden rounded-full bg-[#1C1C1C]">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-[#7A1018] to-[#C21A27]"
+                  className="h-full rounded-full bg-gradient-to-r from-[#5A0008] to-[#A60F1A]"
                   style={{ width: `${(item.count / topCount) * 100}%` }}
                 />
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
@@ -1208,36 +973,37 @@ function RoleHeroCards({
           {rest.map((item, idx) => {
             const rank = idx + 4;
             return (
-              <div
+              <Link
                 key={item.label}
-                className="group flex items-center gap-4 py-2.5 pl-1 pr-2 transition-colors duration-150 first:pt-3 last:pb-0 hover:bg-white/[0.03] rounded-xl"
+                href={`/directory/alumni?q=${encodeURIComponent(item.label)}`}
+                className="group flex items-center gap-4 rounded-xl py-2.5 pl-1 pr-2 transition-colors duration-150 first:pt-3 last:pb-0 hover:bg-[#1A1A1A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
               >
-                <span className="w-7 shrink-0 text-right text-[11px] font-bold tabular-nums text-[#E85A66]/[0.35] transition-colors group-hover:text-[#E85A66]/[0.65]">
+                <span className="w-7 shrink-0 text-right text-[11px] font-bold tabular-nums text-[#D65A61]/[0.35] transition-colors group-hover:text-[#D65A61]/[0.65]">
                   {String(rank).padStart(2, "0")}
                 </span>
-                <span className="flex-1 truncate text-sm text-white/50 transition-colors group-hover:text-white/80">
+                <span className="flex-1 truncate text-sm text-[#A6A6A6] transition-colors group-hover:text-[#E6E6E6]">
                   {item.label}
                 </span>
-                <div className="w-24 overflow-hidden rounded-full bg-white/[0.05]" style={{ height: 3 }}>
+                <div className="w-24 overflow-hidden rounded-full bg-[#1C1C1C]" style={{ height: 3 }}>
                   <div
-                    className="h-full rounded-full bg-[#C21A27]/[0.45] transition-all group-hover:bg-[#C21A27]/[0.65]"
+                    className="h-full rounded-full bg-[#A60F1A]/[0.45] transition-all group-hover:bg-[#A60F1A]/[0.65]"
                     style={{ width: `${(item.count / topCount) * 100}%` }}
                   />
                 </div>
                 <div className="flex w-14 shrink-0 items-baseline justify-end gap-1">
-                  <span className="text-sm font-semibold tabular-nums text-white/50 transition-colors group-hover:text-[#C21A27]">
+                  <span className="text-sm font-semibold tabular-nums text-[#A6A6A6] transition-colors group-hover:text-[#A60F1A]">
                     {item.count}
                   </span>
-                  <span className="text-[10px] text-white/20">{pct(item)}%</span>
+                  <span className="text-[10px] text-[#737373]">{pct(item)}%</span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
       )}
 
       {/* Footer — label shows this is a top-N view */}
-      <div className="mt-5 border-t border-white/[0.05] pt-4 text-center text-[11px] text-white/20">
+      <div className="mt-5 border-t border-[#404040] pt-4 text-center text-[11px] text-[#737373]">
         Showing top {data.length} of {totalDistinct ?? data.length} distinct roles
       </div>
     </section>
@@ -1258,36 +1024,37 @@ function getCompanyInitials(name: string): string {
   return (words[0][0] + words[1][0]).toUpperCase();
 }
 
-function CompanyHeroCards({ data, total, title, subtitle, topBadge, employerLabel }: {
+function CompanyHeroCards({ data, total, title, subtitle, topBadge, employerLabel, filterParam = "company" }: {
   data: GroupRow[];
   total?: number;
   title?: string;
   subtitle?: string;
   topBadge?: string;
   employerLabel?: string;
+  filterParam?: "company" | "pastFirm";
 }) {
   const [first, second, third, ...rest] = data;
   const effectiveTotal = total ?? data.reduce((sum, item) => sum + item.count, 0);
   const topCount = first?.count ?? 1;
 
   if (!first) {
-    return <div className="text-sm text-white/40">No data available.</div>;
+    return <div className="text-sm text-[#737373]">No data available.</div>;
   }
 
   const pct = (item: GroupRow) =>
     effectiveTotal > 0 ? ((item.count / effectiveTotal) * 100).toFixed(1) : "0";
 
   return (
-    <section className="relative overflow-hidden rounded-[34px] border border-white/[0.08] bg-white/[0.04] p-7 backdrop-blur-xl shadow-[0_22px_54px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.05)]">
+    <section className="relative overflow-hidden rounded-[34px] border border-[#404040] bg-[#1C1C1C] p-7 shadow-[0_22px_54px_rgba(0,0,0,0.55)]">
       {/* Ambient corner glow */}
-      <div className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-[#C21A27]/[0.08] blur-3xl" />
+      <div className="pointer-events-none absolute -right-8 -top-8 h-48 w-48 rounded-full bg-[#A60F1A]/[0.08] blur-3xl" />
       {/* Top edge highlight */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.10] to-transparent" />
 
-      <h2 className="relative text-2xl font-semibold tracking-tight text-white/90">
+      <h2 className="relative text-2xl font-semibold tracking-tight text-[#E6E6E6]">
         {title ?? "Top Companies"}
       </h2>
-      <p className="relative mt-2 text-sm leading-7 text-white/38">
+      <p className="relative mt-2 text-sm leading-7 text-[#A6A6A6]">
         {subtitle ?? "Companies where the highest number of alumni currently work."}
       </p>
 
@@ -1295,16 +1062,20 @@ function CompanyHeroCards({ data, total, title, subtitle, topBadge, employerLabe
       <div className="relative mt-6 grid gap-4 lg:grid-cols-[3fr_2fr]">
 
         {/* ── Featured card — #1 ── */}
-        <div className="group relative flex flex-col overflow-hidden rounded-[26px] border border-[#C21A27]/[0.28] bg-[#C21A27]/[0.07] p-7 backdrop-blur-sm shadow-[0_20px_50px_rgba(0,0,0,0.50),0_0_30px_rgba(194,26,39,0.12)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.012] hover:shadow-[0_30px_64px_rgba(0,0,0,0.55),0_0_52px_rgba(194,26,39,0.26)]">
+        <Link
+          href={`/directory/alumni?${filterParam}=${encodeURIComponent(first.label)}`}
+          className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A60F1A]/40 rounded-[26px]"
+        >
+        <div className="group relative flex flex-col overflow-hidden rounded-[26px] border border-[#A60F1A]/[0.28] bg-[#A60F1A]/[0.18] p-7 shadow-[0_20px_50px_rgba(0,0,0,0.50),0_0_30px_rgba(166,15,26,0.12)] transition-all duration-300 hover:-translate-y-2 hover:scale-[1.012] hover:shadow-[0_30px_64px_rgba(0,0,0,0.55),0_0_52px_rgba(166,15,26,0.26)]">
           {/* Hover glow */}
-          <div className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-[#C21A27]/[0.10] blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="pointer-events-none absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-[#A60F1A]/[0.10] blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           {/* Top edge glass highlight */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.18] to-transparent" />
 
           {/* Top row: label + rank */}
           <div className="relative flex items-center justify-between">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#C21A27]/[0.18] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E85A66]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#E85A66]" />
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#A60F1A]/[0.18] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#D65A61]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#D65A61]" />
               {topBadge ?? "Top Employer"}
             </span>
             <span className="text-[11px] font-bold tracking-[0.10em] text-white/[0.18]">01</span>
@@ -1312,27 +1083,28 @@ function CompanyHeroCards({ data, total, title, subtitle, topBadge, employerLabe
 
           {/* Company identity row */}
           <div className="relative mt-6 flex items-center gap-5">
-            <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-[18px] bg-gradient-to-br from-[#C21A27] to-[#7A0E19] text-2xl font-bold text-white shadow-[0_8px_24px_rgba(194,26,39,0.50),inset_0_1px_0_rgba(255,255,255,0.15)]">
+            <div className="flex h-[72px] w-[72px] shrink-0 items-center justify-center rounded-[18px] bg-gradient-to-br from-[#A60F1A] to-[#5A0008] text-2xl font-bold text-white shadow-[0_8px_24px_rgba(166,15,26,0.50),inset_0_1px_0_rgba(255,255,255,0.15)]">
               {getCompanyInitials(first.label)}
             </div>
             <div className="min-w-0">
-              <div className="line-clamp-2 text-xl font-semibold leading-snug tracking-tight text-white/90 transition-colors duration-300 group-hover:text-white">
+              <div className="line-clamp-2 text-xl font-semibold leading-snug tracking-tight text-[#E6E6E6] transition-colors duration-300 group-hover:text-white">
                 {first.label}
               </div>
-              <div className="mt-1 text-xs text-white/35">{employerLabel ?? "Current employer"}</div>
+              <div className="mt-1 text-xs text-[#737373]">{employerLabel ?? "Current employer"}</div>
             </div>
           </div>
 
           {/* Count */}
           <div className="relative mt-6">
-            <div className="text-[4.5rem] font-bold leading-none tracking-tight text-[#E85A66]">
+            <div className="text-[4.5rem] font-bold leading-none tracking-tight text-[#D65A61]">
               {first.count}
             </div>
-            <div className="mt-1.5 text-xs font-semibold uppercase tracking-[0.20em] text-white/30">
+            <div className="mt-1.5 text-xs font-semibold uppercase tracking-[0.20em] text-[#737373]">
               {pct(first)}% of alumni
             </div>
           </div>
         </div>
+        </Link>
 
         {/* ── Stacked: #2 and #3 ── */}
         <div className="grid gap-4">
@@ -1340,22 +1112,26 @@ function CompanyHeroCards({ data, total, title, subtitle, topBadge, employerLabe
             if (!item) return null;
             const rank = idx + 2;
             return (
-              <div
+              <Link
                 key={item.label}
-                className="group relative overflow-hidden rounded-[26px] border border-white/[0.08] bg-white/[0.035] p-5 backdrop-blur-sm shadow-[0_14px_36px_rgba(0,0,0,0.44)] transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.015] hover:shadow-[0_22px_50px_rgba(0,0,0,0.50),0_0_36px_rgba(194,26,39,0.16)]"
+                href={`/directory/alumni?${filterParam}=${encodeURIComponent(item.label)}`}
+                className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25 rounded-[26px]"
+              >
+              <div
+                className="group relative overflow-hidden rounded-[26px] border border-[#404040] bg-[#1A1A1A] p-5 shadow-[0_14px_36px_rgba(0,0,0,0.44)] transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.015] hover:shadow-[0_22px_50px_rgba(0,0,0,0.50),0_0_36px_rgba(166,15,26,0.16)]"
               >
                 {/* Hover glow */}
-                <div className="pointer-events-none absolute -bottom-4 -right-4 h-28 w-28 rounded-full bg-[#C21A27]/[0.08] blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="pointer-events-none absolute -bottom-4 -right-4 h-28 w-28 rounded-full bg-[#A60F1A]/[0.08] blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 {/* Top edge */}
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.10] to-transparent" />
 
                 <div className="relative flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#5A0A12] to-[#2E0507] text-sm font-bold text-white/80 shadow-[0_4px_14px_rgba(0,0,0,0.35)]">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] bg-gradient-to-br from-[#5A0008] to-[#5A0008] text-sm font-bold text-[#E6E6E6] shadow-[0_4px_14px_rgba(0,0,0,0.35)]">
                     {getCompanyInitials(item.label)}
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">
-                      <span className="line-clamp-2 text-sm font-semibold leading-snug text-white/85 transition-colors group-hover:text-white">
+                      <span className="line-clamp-2 text-sm font-semibold leading-snug text-[#E6E6E6] transition-colors group-hover:text-white">
                         {item.label}
                       </span>
                       <span className="shrink-0 text-[10px] font-bold tracking-[0.10em] text-white/[0.18]">
@@ -1363,18 +1139,19 @@ function CompanyHeroCards({ data, total, title, subtitle, topBadge, employerLabe
                       </span>
                     </div>
                     <div className="mt-1.5 flex items-baseline gap-2">
-                      <span className="text-2xl font-bold text-[#D04A56]">{item.count}</span>
-                      <span className="text-xs text-white/28">{pct(item)}%</span>
+                      <span className="text-2xl font-bold text-[#D65A61]">{item.count}</span>
+                      <span className="text-xs text-[#737373]">{pct(item)}%</span>
                     </div>
-                    <div className="mt-3 h-[2px] overflow-hidden rounded-full bg-white/[0.07]">
+                    <div className="mt-3 h-[2px] overflow-hidden rounded-full bg-[#404040]">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-[#8F1320] to-[#C21A27]"
+                        className="h-full rounded-full bg-gradient-to-r from-[#7A0C14] to-[#A60F1A]"
                         style={{ width: `${(item.count / topCount) * 100}%` }}
                       />
                     </div>
                   </div>
                 </div>
               </div>
+              </Link>
             );
           })}
         </div>
@@ -1384,31 +1161,32 @@ function CompanyHeroCards({ data, total, title, subtitle, topBadge, employerLabe
       {rest.length > 0 && (
         <div className="relative mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
           {rest.map((item) => (
-            <div
+            <Link
               key={item.label}
-              className="group flex items-center gap-3 rounded-[18px] border border-white/[0.06] bg-white/[0.025] px-4 py-3 backdrop-blur-sm transition-all duration-200 hover:border-white/[0.10] hover:bg-white/[0.05]"
+              href={`/directory/alumni?${filterParam}=${encodeURIComponent(item.label)}`}
+              className="group flex items-center gap-3 rounded-[18px] border border-[#404040] bg-[#1A1A1A] px-4 py-3 transition-all duration-200 hover:border-[#404040] hover:bg-[#1C1C1C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20"
             >
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-white/[0.06] text-[10px] font-bold text-white/45">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[#1C1C1C] text-[10px] font-bold text-[#A6A6A6]">
                 {getCompanyInitials(item.label)}
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <span className="truncate text-sm font-medium text-white/62 transition-colors group-hover:text-white/82">
+                  <span className="truncate text-sm font-medium text-[#A6A6A6] transition-colors group-hover:text-white">
                     {item.label}
                   </span>
                   <div className="flex shrink-0 items-baseline gap-1.5">
-                    <span className="text-sm font-semibold text-[#C21A27]">{item.count}</span>
-                    <span className="text-[10px] text-white/28">{pct(item)}%</span>
+                    <span className="text-sm font-semibold text-[#A60F1A]">{item.count}</span>
+                    <span className="text-[10px] text-[#737373]">{pct(item)}%</span>
                   </div>
                 </div>
-                <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-white/[0.07]">
+                <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-[#404040]">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#7A1018] to-[#C21A27]"
+                    className="h-full rounded-full bg-gradient-to-r from-[#5A0008] to-[#A60F1A]"
                     style={{ width: `${(item.count / topCount) * 100}%` }}
                   />
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
@@ -1421,11 +1199,15 @@ function BubbleComparison({
   positiveValue,
   negativeLabel,
   negativeValue,
+  positiveHref,
+  negativeHref,
 }: {
   positiveLabel: string;
   positiveValue: number;
   negativeLabel: string;
   negativeValue: number;
+  positiveHref?: string;
+  negativeHref?: string;
 }) {
   const total = positiveValue + negativeValue || 1;
   const positivePct = Math.round((positiveValue / total) * 100);
@@ -1440,36 +1222,46 @@ function BubbleComparison({
   return (
     <div>
       <div className="flex items-center justify-center gap-6">
-        <div
-          className="flex flex-col items-center justify-center rounded-full border border-[#C21A27]/[0.40] bg-[#C21A27]/[0.12] backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-[0_0_32px_rgba(194,26,39,0.40)]"
-          style={{ width: posSize, height: posSize }}
-        >
-          <span className="font-bold leading-none text-white" style={{ fontSize: posSize * 0.22 }}>
-            {positiveValue}
-          </span>
-          <span className="mt-0.5 font-medium leading-none text-[#C21A27]/80" style={{ fontSize: posSize * 0.13 }}>
-            {positivePct}%
-          </span>
-        </div>
+        {(() => {
+          const bubble = (
+            <div
+              className={`flex flex-col items-center justify-center rounded-full border border-[#A60F1A]/[0.40] bg-[#A60F1A]/[0.22] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_32px_rgba(166,15,26,0.40)] ${positiveHref ? "cursor-pointer" : ""}`}
+              style={{ width: posSize, height: posSize }}
+            >
+              <span className="font-bold leading-none text-white" style={{ fontSize: posSize * 0.22 }}>
+                {positiveValue}
+              </span>
+              <span className="mt-0.5 font-medium leading-none text-[#A60F1A]/80" style={{ fontSize: posSize * 0.13 }}>
+                {positivePct}%
+              </span>
+            </div>
+          );
+          return positiveHref ? <Link href={positiveHref} className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A60F1A]/40">{bubble}</Link> : bubble;
+        })()}
 
-        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/[0.10] bg-white/[0.04] text-[9px] font-bold uppercase tracking-wider text-white/30">
+        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#404040] bg-[#1C1C1C] text-[9px] font-bold uppercase tracking-wider text-[#737373]">
           vs
         </div>
 
-        <div
-          className="flex flex-col items-center justify-center rounded-full border border-white/[0.10] bg-white/[0.06] backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)]"
-          style={{ width: negSize, height: negSize }}
-        >
-          <span className="font-bold leading-none text-white/80" style={{ fontSize: negSize * 0.22 }}>
-            {negativeValue}
-          </span>
-          <span className="mt-0.5 font-medium leading-none text-white/35" style={{ fontSize: negSize * 0.13 }}>
-            {negativePct}%
-          </span>
-        </div>
+        {(() => {
+          const bubble = (
+            <div
+              className={`flex flex-col items-center justify-center rounded-full border border-[#404040] bg-[#1C1C1C] transition-all duration-300 hover:scale-110 hover:shadow-[0_0_24px_rgba(255,255,255,0.08)] ${negativeHref ? "cursor-pointer" : ""}`}
+              style={{ width: negSize, height: negSize }}
+            >
+              <span className="font-bold leading-none text-[#E6E6E6]" style={{ fontSize: negSize * 0.22 }}>
+                {negativeValue}
+              </span>
+              <span className="mt-0.5 font-medium leading-none text-[#737373]" style={{ fontSize: negSize * 0.13 }}>
+                {negativePct}%
+              </span>
+            </div>
+          );
+          return negativeHref ? <Link href={negativeHref} className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/25">{bubble}</Link> : bubble;
+        })()}
       </div>
 
-      <div className="mt-4 flex items-center justify-between px-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+      <div className="mt-4 flex items-center justify-between px-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#737373]">
         <span>{positiveLabel}</span>
         <span>{negativeLabel}</span>
       </div>

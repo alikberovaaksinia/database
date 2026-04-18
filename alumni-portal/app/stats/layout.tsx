@@ -5,7 +5,7 @@ export default function StatsLayout({
 }) {
   return (
     <>
-      <style href="stats-bg" precedence="high">{`html, body { background-color: #08090B; }`}</style>
+      <style href="stats-bg" precedence="high">{`html, body { background-color: #1A1A1A; }`}</style>
       {children}
     </>
   );

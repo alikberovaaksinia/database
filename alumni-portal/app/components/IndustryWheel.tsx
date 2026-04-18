@@ -1,23 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { statsIndustryToFilterCanonicals } from "../lib/industry";
 
 type GroupRow = {
   label: string;
   count: number;
 };
 
+// Dark → light: largest industry gets the deepest red, smallest gets the
+// lightest tint. Data arrives pre-sorted descending, so index 0 is always
+// the biggest segment. For >8 categories the palette cycles back to dark,
+// which creates natural contrast at the wrap boundary (#F4C7C9 → #5A0008).
 const PALETTE = [
-  "#8F1320",
-  "#C21A27",
-  "#D94A57",
-  "#A81A28",
-  "#B84C5A",
-  "#6E0D15",
-  "#E07080",
-  "#943040",
-  "#CF6878",
-  "#7A1E28",
+  "#5A0008",  // 0 — largest slice, deepest red
+  "#7A0C14",  // 1
+  "#A60F1A",  // 2
+  "#C1121F",  // 3
+  "#D65A61",  // 4
+  "#E0666A",  // 5
+  "#E89A9E",  // 6
+  "#F4C7C9",  // 7 — smallest slice, lightest tint
 ];
 
 function toRad(deg: number) {
@@ -45,6 +49,12 @@ function sectorPath(
   ].join(" ");
 }
 
+function buildIndustryUrl(statsLabel: string): string {
+  const canonicals = statsIndustryToFilterCanonicals(statsLabel);
+  const qs = canonicals.map((c) => `industry=${encodeURIComponent(c)}`).join("&");
+  return `/directory/alumni?${qs}`;
+}
+
 export default function IndustryWheel({
   data,
   total,
@@ -52,6 +62,7 @@ export default function IndustryWheel({
   data: GroupRow[];
   total?: number;
 }) {
+  const router = useRouter();
   const [hovered, setHovered] = useState<number | null>(null);
 
   if (data.length === 0) {
@@ -95,12 +106,12 @@ export default function IndustryWheel({
           width="320"
           height="320"
           viewBox="0 0 320 320"
-          className="overflow-visible drop-shadow-[0_0_40px_rgba(194,26,39,0.14)]"
+          className="overflow-visible drop-shadow-[0_0_40px_rgba(166,15,26,0.14)]"
         >
           <defs>
             <radialGradient id="iw-center" cx="38%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#C21A27" stopOpacity="0.24" />
-              <stop offset="100%" stopColor="#0C0A0D" stopOpacity="0" />
+              <stop offset="0%" stopColor="#A60F1A" stopOpacity="0.24" />
+              <stop offset="100%" stopColor="#1A1A1A" stopOpacity="0" />
             </radialGradient>
           </defs>
 
@@ -109,6 +120,8 @@ export default function IndustryWheel({
               key={s.item.label}
               d={s.path}
               fill={s.color}
+              role="button"
+              aria-label={`Filter directory by ${s.item.label}`}
               style={{
                 transform: hovered === i
                   ? `translate(${s.tx}px, ${s.ty}px)`
@@ -124,11 +137,12 @@ export default function IndustryWheel({
               }}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
+              onClick={() => router.push(buildIndustryUrl(s.item.label))}
             />
           ))}
 
           {/* Center disc */}
-          <circle cx={cx} cy={cy} r={ri - 3} fill="#0C0A0D" />
+          <circle cx={cx} cy={cy} r={ri - 3} fill="#1A1A1A" />
           <circle cx={cx} cy={cy} r={ri - 3} fill="url(#iw-center)" />
 
           {/* Center — default */}
@@ -183,15 +197,17 @@ export default function IndustryWheel({
               : "0";
           const isActive = hovered === i;
           return (
-            <div
+            <button
               key={s.item.label}
-              className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2 transition-all duration-200"
+              type="button"
+              className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-2 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               style={{
                 background: isActive ? `${s.color}1E` : "transparent",
                 opacity: hovered !== null && !isActive ? 0.42 : 1,
               }}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
+              onClick={() => router.push(buildIndustryUrl(s.item.label))}
             >
               <span
                 className="h-2.5 w-2.5 shrink-0 rounded-sm transition-shadow duration-200"
@@ -203,7 +219,7 @@ export default function IndustryWheel({
               <span
                 className="min-w-0 flex-1 truncate text-sm transition-colors duration-200"
                 style={{
-                  color: isActive ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.62)",
+                  color: isActive ? "rgba(255,255,255,1)" : "rgba(230,230,230,1)",
                 }}
               >
                 {s.item.label}
@@ -214,7 +230,7 @@ export default function IndustryWheel({
               <span className="w-10 shrink-0 text-right text-xs tabular-nums text-white/22">
                 {pct}%
               </span>
-            </div>
+            </button>
           );
         })}
       </div>

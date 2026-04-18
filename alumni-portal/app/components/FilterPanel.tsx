@@ -10,26 +10,24 @@ type Option = {
 type FilterPanelProps = {
   query: string;
   selectedCountries: string[];
-  selectedRoles: string[];
   selectedCompanies: string[];
   selectedIndustries: string[];
+  selectedSeniorities: string[];
   selectedAgeGroups: string[];
   selectedJemeRoles: string[];
   selectedBoards: string[];
   selectedHeads: string[];
   selectedPastFirms: string[];
-  selectedPastRoles: string[];
   selectedGradYears: string[];
   countryOptions: Option[];
-  roleOptions: Option[];
   companyOptions: Option[];
   industryOptions: Option[];
+  seniorityOptions: Option[];
   ageGroupOptions: Option[];
   jemeRoleOptions: Option[];
   boardOptions: Option[];
   headOptions: Option[];
   pastFirmOptions: Option[];
-  pastRoleOptions: Option[];
   gradYearOptions: Option[];
 };
 
@@ -44,26 +42,24 @@ type DropdownMultiSelectProps = {
 export default function FilterPanel({
   query,
   selectedCountries,
-  selectedRoles,
   selectedCompanies,
   selectedIndustries,
+  selectedSeniorities,
   selectedAgeGroups,
   selectedJemeRoles,
   selectedBoards,
   selectedHeads,
   selectedPastFirms,
-  selectedPastRoles,
   selectedGradYears,
   countryOptions,
-  roleOptions,
   companyOptions,
   industryOptions,
+  seniorityOptions,
   ageGroupOptions,
   jemeRoleOptions,
   boardOptions,
   headOptions,
   pastFirmOptions,
-  pastRoleOptions,
   gradYearOptions,
 }: FilterPanelProps) {
   const activeFilters = useMemo(() => {
@@ -79,50 +75,47 @@ export default function FilterPanel({
 
     return [
       ...mapSelected("Country", selectedCountries, countryOptions),
-      ...mapSelected("Role", selectedRoles, roleOptions),
       ...mapSelected("Company", selectedCompanies, companyOptions),
       ...mapSelected("Industry", selectedIndustries, industryOptions),
+      ...mapSelected("Seniority", selectedSeniorities, seniorityOptions),
       ...mapSelected("Age", selectedAgeGroups, ageGroupOptions),
       ...mapSelected("JEME Role", selectedJemeRoles, jemeRoleOptions),
       ...mapSelected("Board", selectedBoards, boardOptions),
       ...mapSelected("Dept. Head", selectedHeads, headOptions),
       ...mapSelected("Past Firm", selectedPastFirms, pastFirmOptions),
-      ...mapSelected("Past Role", selectedPastRoles, pastRoleOptions),
       ...mapSelected("Grad Year", selectedGradYears, gradYearOptions),
     ];
   }, [
     selectedCountries,
-    selectedRoles,
     selectedCompanies,
     selectedIndustries,
+    selectedSeniorities,
     selectedAgeGroups,
     selectedJemeRoles,
     selectedBoards,
     selectedHeads,
     selectedPastFirms,
-    selectedPastRoles,
     selectedGradYears,
     countryOptions,
-    roleOptions,
     companyOptions,
     industryOptions,
+    seniorityOptions,
     ageGroupOptions,
     jemeRoleOptions,
     boardOptions,
     headOptions,
     pastFirmOptions,
-    pastRoleOptions,
     gradYearOptions,
   ]);
 
   return (
     <form
       action="/directory/alumni"
-      className="space-y-6 rounded-[30px] border border-[#E7DCDD] bg-white/90 p-6 shadow-[0_14px_30px_rgba(0,0,0,0.05)] backdrop-blur"
+      className="space-y-6 rounded-[30px] border border-[#D9D9D9] bg-white/90 p-6 shadow-[0_14px_30px_rgba(0,0,0,0.05)] backdrop-blur"
     >
       <div className="space-y-4">
         <div>
-          <div className="text-sm font-semibold uppercase tracking-[0.22em] text-[#9B6A71]">
+          <div className="text-sm font-semibold uppercase tracking-[0.22em] text-[#737373]">
             Search & Filters
           </div>
           <h2 className="mt-2 text-4xl font-semibold tracking-tight leading-[0.95] md:text-5xl">
@@ -131,21 +124,19 @@ export default function FilterPanel({
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium text-[#615F59]">
-            Search by name, firm or role
-          </label>
           <input
             type="text"
             name="q"
             defaultValue={query}
-            placeholder="Type a name, firm or role"
-            className="w-full rounded-full border border-[#E7DCDD] bg-[#FCFAFA] px-5 py-3.5 text-base outline-none transition focus:border-[#C21A27]"
+            placeholder="Search by any characteristic"
+            aria-label="Search by any characteristic"
+            className="w-full rounded-full border border-[#D9D9D9] bg-[#E6E6E6] px-5 py-3.5 text-base outline-none transition focus:border-[#A60F1A]"
           />
         </div>
       </div>
 
       <div className="grid gap-5 xl:grid-cols-2">
-        <section className="rounded-[24px] border border-[#EFE4E5] bg-[#FCFAFA] p-5">
+        <section className="rounded-[24px] border border-[#D9D9D9] bg-[#E6E6E6] p-5">
           <h3 className="text-2xl font-semibold tracking-tight leading-tight">
             Professional
           </h3>
@@ -157,14 +148,6 @@ export default function FilterPanel({
               options={countryOptions}
               selectedValues={selectedCountries}
               placeholder="All countries"
-            />
-
-            <DropdownMultiSelect
-              label="Current Role"
-              name="role"
-              options={roleOptions}
-              selectedValues={selectedRoles}
-              placeholder="All roles"
             />
 
             <DropdownMultiSelect
@@ -191,17 +174,19 @@ export default function FilterPanel({
               placeholder="All past firms"
             />
 
-            <DropdownMultiSelect
-              label="Past Roles"
-              name="pastRole"
-              options={pastRoleOptions}
-              selectedValues={selectedPastRoles}
-              placeholder="All past roles"
-            />
+            <div className="md:col-span-2">
+              <DropdownMultiSelect
+                label="Seniority"
+                name="seniority"
+                options={seniorityOptions}
+                selectedValues={selectedSeniorities}
+                placeholder="All seniority levels"
+              />
+            </div>
           </div>
         </section>
 
-        <section className="rounded-[24px] border border-[#EFE4E5] bg-[#FCFAFA] p-5">
+        <section className="rounded-[24px] border border-[#D9D9D9] bg-[#E6E6E6] p-5">
           <h3 className="text-2xl font-semibold tracking-tight leading-tight">
             Network
           </h3>
@@ -224,7 +209,7 @@ export default function FilterPanel({
             />
 
             <DropdownMultiSelect
-              label="Board"
+              label="Was the associate a member of the board?"
               name="board"
               options={boardOptions}
               selectedValues={selectedBoards}
@@ -232,20 +217,22 @@ export default function FilterPanel({
             />
 
             <DropdownMultiSelect
-              label="Department Head"
+              label="Was the associate a head of a department?"
               name="head"
               options={headOptions}
               selectedValues={selectedHeads}
               placeholder="All"
             />
 
-            <DropdownMultiSelect
-              label="JEME Graduation Year"
-              name="gradYear"
-              options={gradYearOptions}
-              selectedValues={selectedGradYears}
-              placeholder="All years"
-            />
+            <div className="md:col-span-2">
+              <DropdownMultiSelect
+                label="JEME Graduation Year"
+                name="gradYear"
+                options={gradYearOptions}
+                selectedValues={selectedGradYears}
+                placeholder="All years"
+              />
+            </div>
           </div>
         </section>
       </div>
@@ -255,7 +242,7 @@ export default function FilterPanel({
           {activeFilters.map((item, index) => (
             <div
               key={`${item.label}-${item.value}-${index}`}
-              className="rounded-full bg-[#F5E8EA] px-3 py-1.5 text-xs font-medium text-[#A33640]"
+              className="rounded-full bg-[#F4C7C9] px-3 py-1.5 text-xs font-medium text-[#A60F1A]"
             >
               {item.label}: {item.value}
             </div>
@@ -266,14 +253,14 @@ export default function FilterPanel({
       <div className="flex flex-wrap items-center gap-3">
         <button
           type="submit"
-          className="rounded-full bg-[#C21A27] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#9E1520] hover:shadow-[0_14px_26px_rgba(194,26,39,0.20)]"
+          className="rounded-full bg-[#A60F1A] px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#A60F1A] hover:shadow-[0_14px_26px_rgba(166,15,26,0.20)]"
         >
           Apply filters
         </button>
 
         <a
           href="/directory/alumni"
-          className="rounded-full border border-[#E7DCDD] bg-white px-5 py-2.5 text-sm font-semibold text-[#615F59] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#C21A27] hover:text-[#C21A27] hover:shadow-[0_12px_22px_rgba(194,26,39,0.08)]"
+          className="rounded-full border border-[#D9D9D9] bg-white px-5 py-2.5 text-sm font-semibold text-[#5C5A56] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#A60F1A] hover:text-[#A60F1A] hover:shadow-[0_12px_22px_rgba(166,15,26,0.08)]"
         >
           Reset
         </a>
@@ -292,6 +279,14 @@ function DropdownMultiSelect({
   const [open, setOpen] = useState(false);
   const [localSelected, setLocalSelected] = useState<string[]>(selectedValues);
   const rootRef = useRef<HTMLDivElement | null>(null);
+
+  // Sync local state when server-side selectedValues change (e.g. navigating
+  // from stats page with a pre-applied country filter).
+  const selectedKey = selectedValues.join(",");
+  useEffect(() => {
+    setLocalSelected(selectedValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedKey]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -321,7 +316,7 @@ function DropdownMultiSelect({
       {localSelected.map((value) => (
         <input key={value} type="hidden" name={name} value={value} />
       ))}
-      <label className="mb-1.5 block text-sm font-medium text-[#615F59]">
+      <label className="mb-1.5 block text-sm font-medium text-[#5C5A56]">
         {label}
       </label>
 
@@ -330,15 +325,15 @@ function DropdownMultiSelect({
         onClick={() => setOpen((prev) => !prev)}
         className={`flex w-full items-center justify-between rounded-full border px-4 py-3 text-left text-sm transition-all duration-300 ${
           open
-            ? "border-[#C21A27] bg-white shadow-[0_0_0_4px_rgba(194,26,39,0.08)]"
-            : "border-[#E7DCDD] bg-white hover:-translate-y-0.5 hover:border-[#D9B7BB] hover:shadow-[0_10px_20px_rgba(0,0,0,0.04)]"
+            ? "border-[#A60F1A] bg-white shadow-[0_0_0_4px_rgba(166,15,26,0.08)]"
+            : "border-[#D9D9D9] bg-white hover:-translate-y-0.5 hover:border-[#D9D9D9] hover:shadow-[0_10px_20px_rgba(0,0,0,0.04)]"
         }`}
       >
-        <span className={selectedLabels.length ? "text-[#1D1D1B]" : "text-[#8A7E7F]"}>
+        <span className={selectedLabels.length ? "text-[#1A1A1A]" : "text-[#737373]"}>
           {triggerText}
         </span>
         <span
-          className={`text-xs text-[#8A7E7F] transition-transform duration-200 ${
+          className={`text-xs text-[#737373] transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
         >
@@ -347,9 +342,9 @@ function DropdownMultiSelect({
       </button>
 
       {open && (
-        <div className="absolute left-0 right-0 z-30 mt-2 overflow-hidden rounded-[20px] border border-[#E7DCDD] bg-white shadow-[0_16px_36px_rgba(0,0,0,0.10)]">
+        <div className="absolute left-0 right-0 z-30 mt-2 overflow-hidden rounded-[20px] border border-[#D9D9D9] bg-white shadow-[0_16px_36px_rgba(0,0,0,0.10)]">
           {options.length === 0 ? (
-            <div className="px-4 py-3 text-sm text-[#8A7E7F]">{placeholder}</div>
+            <div className="px-4 py-3 text-sm text-[#737373]">{placeholder}</div>
           ) : (
             <div className="max-h-64 overflow-y-auto p-2">
               <div className="space-y-1.5">
@@ -360,7 +355,7 @@ function DropdownMultiSelect({
                     <label
                       key={option.value}
                       className={`flex cursor-pointer items-center gap-3 rounded-[14px] px-3 py-2.5 transition ${
-                        checked ? "bg-[#F5E8EA]" : "hover:bg-[#FAF6F6]"
+                        checked ? "bg-[#F4C7C9]" : "hover:bg-[#E6E6E6]"
                       }`}
                     >
                       <input
@@ -374,9 +369,9 @@ function DropdownMultiSelect({
                               : [...prev, option.value],
                           )
                         }
-                        className="h-4 w-4 accent-[#C21A27]"
+                        className="h-4 w-4 accent-[#A60F1A]"
                       />
-                      <span className="text-sm text-[#1D1D1B]">{option.label}</span>
+                      <span className="text-sm text-[#1A1A1A]">{option.label}</span>
                     </label>
                   );
                 })}
