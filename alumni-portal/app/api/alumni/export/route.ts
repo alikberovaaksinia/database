@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import * as XLSX from "xlsx";
 import { prisma } from "../../../lib/prisma";
 import { getCountryName } from "../../../lib/countries";
 import { rawVariantsForIndustry } from "../../../lib/industry";
 import { rawVariantsForSeniority, normalizeSeniority } from "../../../lib/seniority";
+import { EXPORT_FIELDS, EXPORT_FIELD_KEYS } from "../../../lib/export-fields";
 
-// ── Helpers (mirrors directory page helpers) ─────────────────────────────────
+// ── Helpers ──────────────────────────────────────────────────────────────────
 
 function single(v: string | null): string {
   return v ?? "";
@@ -24,19 +26,15 @@ function normalizeBool(value: string | null | undefined): string {
 
 function csvCell(value: unknown): string {
   const s = value == null ? "" : String(value).trim();
-  // RFC 4180: wrap in quotes, escape internal quotes by doubling
   return `"${s.replace(/"/g, '""')}"`;
 }
 
 function toCsv(headers: string[], rows: string[][]): string {
-  const lines = [headers, ...rows].map((row) =>
-    row.map(csvCell).join(","),
-  );
-  // BOM ensures Excel opens the file with correct UTF-8 encoding
+  const lines = [headers, ...rows].map((row) => row.map(csvCell).join(","));
   return "\uFEFF" + lines.join("\r\n");
 }
 
-// ── WHERE clause builder (same logic as directory page) ──────────────────────
+// ── WHERE clause builder ─────────────────────────────────────────────────────
 
 function buildWhere(params: URLSearchParams) {
   const query = single(params.get("q"));
@@ -67,10 +65,8 @@ function buildWhere(params: URLSearchParams) {
 
   if (selectedCountries.length)
     andConditions.push({ current_country: { in: selectedCountries } });
-
   if (selectedCompanies.length)
     andConditions.push({ current_firm: { in: selectedCompanies } });
-
   if (selectedIndustries.length) {
     const variants = rawVariantsForIndustry(selectedIndustries);
     andConditions.push({
@@ -79,7 +75,6 @@ function buildWhere(params: URLSearchParams) {
       })),
     });
   }
-
   if (selectedSeniorities.length) {
     const variants = rawVariantsForSeniority(selectedSeniorities);
     andConditions.push({
@@ -88,22 +83,16 @@ function buildWhere(params: URLSearchParams) {
       })),
     });
   }
-
   if (selectedAgeGroups.length)
     andConditions.push({ age_group: { in: selectedAgeGroups } });
-
   if (selectedJemeRoles.length)
     andConditions.push({ jeme_role: { in: selectedJemeRoles } });
-
   if (selectedBoards.length)
     andConditions.push({ board: { in: selectedBoards } });
-
   if (selectedHeads.length)
     andConditions.push({ head: { in: selectedHeads } });
-
   if (selectedPastFirms.length)
     andConditions.push({ notable_past_firms: { in: selectedPastFirms } });
-
   if (selectedGradYears.length) {
     andConditions.push({
       OR: selectedGradYears.map((year) => ({
@@ -115,94 +104,89 @@ function buildWhere(params: URLSearchParams) {
   return andConditions.length ? { AND: andConditions } : {};
 }
 
+// ── Field value resolver ─────────────────────────────────────────────────────
+
+type AlumniRecord = Record<string, string | null | undefined>;
+
+function resolveFieldValue(a: AlumniRecord, key: string): string {
+  switch (key) {
+    case "current_role_seniority":
+      return normalizeSeniority(a.current_role_seniority) ?? "";
+    case "current_country":
+      return a.current_country ? getCountryName(a.current_country) : "";
+    case "board":
+      return normalizeBool(a.board);
+    case "head":
+      return normalizeBool(a.head);
+    default:
+      return a[key] ?? "";
+  }
+}
+
 // ── Route handler ────────────────────────────────────────────────────────────
 
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
   const where = buildWhere(params);
 
-  const alumni = await prisma.alumni_raw.findMany({
+  // Resolve requested fields (default: all)
+  const rawFields = params.get("fields");
+  const requestedKeys = rawFields
+    ? rawFields
+        .split(",")
+        .map((k) => k.trim())
+        .filter((k) => EXPORT_FIELD_KEYS.has(k))
+    : EXPORT_FIELDS.map((f) => f.key);
+
+  // Deduplicate while preserving order
+  const fieldKeys = [...new Set(requestedKeys)];
+
+  if (fieldKeys.length === 0) {
+    return new NextResponse("No valid fields selected.", { status: 400 });
+  }
+
+  // Build Prisma select — only fetch what we need
+  const select = Object.fromEntries(fieldKeys.map((k) => [k, true])) as Record<
+    string,
+    true
+  >;
+
+  const alumni = (await prisma.alumni_raw.findMany({
     where,
     orderBy: { full_name: "asc" },
-    select: {
-      full_name: true,
-      first_name: true,
-      surname: true,
-      current_role: true,
-      current_role_seniority: true,
-      current_firm: true,
-      current_industry: true,
-      current_city: true,
-      current_country: true,
-      age_group: true,
-      jeme_role: true,
-      jeme_role_2: true,
-      jeme_role_3: true,
-      jeme_starting_period: true,
-      jeme_ending_period: true,
-      board: true,
-      head: true,
-      email: true,
-      phone_number: true,
-      linkedin: true,
-      notable_past_firms: true,
-      npf_industry: true,
-    },
-  });
+    select,
+  })) as AlumniRecord[];
 
-  const HEADERS = [
-    "First Name",
-    "Surname",
-    "Full Name",
-    "Current Role",
-    "Seniority",
-    "Company",
-    "Industry",
-    "City",
-    "Country",
-    "Age Group",
-    "JEME Role",
-    "JEME Role 2",
-    "JEME Role 3",
-    "JEME Start Date",
-    "JEME Graduation Date",
-    "Board Member",
-    "Department Head",
-    "Email",
-    "Phone",
-    "LinkedIn",
-    "Past Notable Firms",
-    "Past Industry",
-  ];
+  // Map field keys to human-readable headers
+  const fieldMap = new Map(EXPORT_FIELDS.map((f) => [f.key, f.label]));
+  const headers = fieldKeys.map((k) => fieldMap.get(k) ?? k);
+  const rows = alumni.map((a) => fieldKeys.map((k) => resolveFieldValue(a, k)));
 
-  const rows = alumni.map((a) => [
-    a.first_name ?? "",
-    a.surname ?? "",
-    a.full_name ?? "",
-    a.current_role ?? "",
-    normalizeSeniority(a.current_role_seniority) ?? "",
-    a.current_firm ?? "",
-    a.current_industry ?? "",
-    a.current_city ?? "",
-    a.current_country ? getCountryName(a.current_country) : "",
-    a.age_group ?? "",
-    a.jeme_role ?? "",
-    a.jeme_role_2 ?? "",
-    a.jeme_role_3 ?? "",
-    a.jeme_starting_period ?? "",
-    a.jeme_ending_period ?? "",
-    normalizeBool(a.board),
-    normalizeBool(a.head),
-    a.email ?? "",
-    a.phone_number ?? "",
-    a.linkedin ?? "",
-    a.notable_past_firms ?? "",
-    a.npf_industry ?? "",
-  ]);
-
-  const csv = toCsv(HEADERS, rows);
+  const format = params.get("format") === "xlsx" ? "xlsx" : "csv";
   const timestamp = new Date().toISOString().slice(0, 10);
 
+  if (format === "xlsx") {
+    const wb = XLSX.utils.book_new();
+    const wsData = [headers, ...rows];
+    const ws = XLSX.utils.aoa_to_sheet(wsData);
+    XLSX.utils.book_append_sheet(wb, ws, "Alumni");
+    const nodeBuffer: Buffer = XLSX.write(wb, { type: "buffer", bookType: "xlsx" });
+    const arrayBuffer = nodeBuffer.buffer.slice(
+      nodeBuffer.byteOffset,
+      nodeBuffer.byteOffset + nodeBuffer.byteLength,
+    ) as ArrayBuffer;
+
+    return new NextResponse(arrayBuffer, {
+      headers: {
+        "Content-Type":
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Content-Disposition": `attachment; filename="alumni-export-${timestamp}.xlsx"`,
+        "Cache-Control": "no-store",
+      },
+    });
+  }
+
+  const csv = toCsv(headers, rows);
   return new NextResponse(csv, {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",

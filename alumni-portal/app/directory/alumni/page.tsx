@@ -6,6 +6,7 @@ import { buildIndustryOptions, rawVariantsForIndustry } from "../../lib/industry
 import FilterPanel from "../../components/FilterPanel";
 import AlumniTable from "../../components/AlumniTable";
 import InteractiveGradientText from "../../components/InteractiveGradientText";
+import ExportModal from "../../components/ExportModal";
 
 type SearchParams = Promise<{
   q?: string | string[];
@@ -291,6 +292,20 @@ export default async function AlumniPage({
     .sort((a, b) => b.localeCompare(a))
     .map((year) => ({ value: year, label: year }));
 
+  const exportParams = new URLSearchParams();
+  if (query) exportParams.set("q", query);
+  selectedCountries.forEach((v) => exportParams.append("country", v));
+  selectedCompanies.forEach((v) => exportParams.append("company", v));
+  selectedIndustries.forEach((v) => exportParams.append("industry", v));
+  selectedSeniorities.forEach((v) => exportParams.append("seniority", v));
+  selectedAgeGroups.forEach((v) => exportParams.append("ageGroup", v));
+  selectedJemeRoles.forEach((v) => exportParams.append("jemeRole", v));
+  selectedBoards.forEach((v) => exportParams.append("board", v));
+  selectedHeads.forEach((v) => exportParams.append("head", v));
+  selectedPastFirms.forEach((v) => exportParams.append("pastFirm", v));
+  selectedGradYears.forEach((v) => exportParams.append("gradYear", v));
+  const filterQueryString = exportParams.toString();
+
   const returnTo = buildReturnTo({
     q: query,
     country: selectedCountries,
@@ -382,12 +397,10 @@ export default async function AlumniPage({
               Showing {startItem}–{endItem} of {totalCount}
             </div>
             {totalCount > 0 && (
-              <a
-                href={paginationBase.replace(/^\/directory\/alumni/, "/api/alumni/export")}
-                className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-[#D9D9D9] bg-white px-3 py-1.5 text-xs font-semibold text-[#5C5A56] transition hover:border-[#A60F1A] hover:text-[#A60F1A]"
-              >
-                ↓ Export CSV
-              </a>
+              <ExportModal
+                filterParams={filterQueryString}
+                totalCount={totalCount}
+              />
             )}
           </div>
 
