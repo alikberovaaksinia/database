@@ -286,7 +286,7 @@ export default async function StatsPage() {
       {/* Single very subtle vignette — no heavy glows */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_120%_60%_at_50%_0%,rgba(166,15,26,0.06),transparent)]" />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-8 pb-24">
+      <div className="relative mx-auto max-w-4xl px-6 py-8 pb-24">
         {/* Back button */}
         <div className="mb-8">
           <Link
